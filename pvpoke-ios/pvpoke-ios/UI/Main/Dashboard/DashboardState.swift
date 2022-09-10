@@ -1,8 +1,12 @@
 //
-//  DashboardEvent.swift
+//  DashboardState.swift
 //  FuckYouTube
 //
 //  Created by Bryan Malumphy on 8/8/22.
 //
 
 import Foundation
+
+struct DashboardState: State {
+    let createdAt: Date
+}

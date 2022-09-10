@@ -14,11 +14,12 @@ protocol PreloadingService {
 
 private final class PreloadingServiceImpl: PreloadingService {
     
-    var testPokemon: [Pokemon] = []
-    var testMoves: [Move] = []
-    var testFormats: [Format] = []
-    var testBase: Base? = nil
-    var testCups: [Cup] = []
+    //TODO: Consider Pushing these to CoreData so that we only need parse these files once
+    private(set) var testPokemon: [Pokemon] = []
+    private(set) var testMoves: [Move] = []
+    private(set) var testFormats: [Format] = []
+    private(set) var testBase: Base? = nil
+    private(set) var testCups: [Cup] = []
     
     func preloadContent() {
         testPokemon = CodableUtils.parseFile([Pokemon].self, fileName: "pokemon") ?? []
@@ -26,7 +27,6 @@ private final class PreloadingServiceImpl: PreloadingService {
         testFormats = CodableUtils.parseFile([Format].self, fileName: "formats") ?? []
         testBase = CodableUtils.parseFile(Base.self, fileName: "base")
         testCups = CodableUtils.parseAllFilesInPath(Cup.self, folderPath: "cups")
-        print()
     }
 }
 

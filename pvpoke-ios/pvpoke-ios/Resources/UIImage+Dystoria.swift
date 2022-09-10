@@ -21,4 +21,11 @@ extension UIImage {
         return imageWithName("back").withRenderingMode(.alwaysTemplate)
     }
     
+    static var dashboardIcon: UIImage {
+        return imageWithName("dashboard-dashboard_symbol")
+    }
+    
+    static var teamBuilderIcon: UIImage {
+        return imageWithName("atr-atr_symbol")
+    }
 }

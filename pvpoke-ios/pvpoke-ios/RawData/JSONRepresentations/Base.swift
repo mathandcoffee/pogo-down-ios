@@ -98,6 +98,8 @@ struct Base: JSONCodable {
     let pokemonTraits: PokemonTraits
     let pokemonRegions: [PokemonRegion]
     let shadowPokemon: [String]
+    let pokemon: [String]
+    let moves: [String]
 }
 
 /**

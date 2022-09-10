@@ -45,9 +45,10 @@ final class SplashVC: BaseViewController {
     func handleEvent(event: SplashEvent) {
         switch event {
         case .finishedPreloading:
-            print()
+            navigateTo(.main, injectIntoRootNavigationController: true)
         case .preloadingFailed:
             print()
+            //TODO: Show alert
         }
     }
     

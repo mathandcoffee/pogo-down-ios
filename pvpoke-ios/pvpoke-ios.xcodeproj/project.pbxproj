@@ -66,6 +66,11 @@
 		78FA965728CD06780052805B /* gamemaster in Resources */ = {isa = PBXBuildFile; fileRef = 78FA965628CD06780052805B /* gamemaster */; };
 		78FA965928CD10AC0052805B /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA965828CD10AC0052805B /* Base.swift */; };
 		78FA965B28CD15140052805B /* Cup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA965A28CD15140052805B /* Cup.swift */; };
+		78FA965E28CD24490052805B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA965D28CD24490052805B /* MainTabBarController.swift */; };
+		78FA966128CD2BEB0052805B /* TeamBuilderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA966028CD2BEB0052805B /* TeamBuilderVC.swift */; };
+		78FA966328CD2BF40052805B /* TeamBuilderEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA966228CD2BF40052805B /* TeamBuilderEvent.swift */; };
+		78FA966528CD2C050052805B /* TeamBuilderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA966428CD2C050052805B /* TeamBuilderState.swift */; };
+		78FA966728CD2C180052805B /* TeamBuilderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA966628CD2C180052805B /* TeamBuilderViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +145,11 @@
 		78FA965628CD06780052805B /* gamemaster */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gamemaster; sourceTree = "<group>"; };
 		78FA965828CD10AC0052805B /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		78FA965A28CD15140052805B /* Cup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cup.swift; sourceTree = "<group>"; };
+		78FA965D28CD24490052805B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		78FA966028CD2BEB0052805B /* TeamBuilderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamBuilderVC.swift; sourceTree = "<group>"; };
+		78FA966228CD2BF40052805B /* TeamBuilderEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamBuilderEvent.swift; sourceTree = "<group>"; };
+		78FA966428CD2C050052805B /* TeamBuilderState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamBuilderState.swift; sourceTree = "<group>"; };
+		78FA966628CD2C180052805B /* TeamBuilderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamBuilderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,8 +245,8 @@
 		78FA918A28CCE9AB0052805B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				78FA965C28CD241F0052805B /* Main */,
 				78FA91E228CCEDD60052805B /* HelperViewControllers */,
-				78FA91D428CCEBC00052805B /* Dashboard */,
 				78FA91CB28CCEBA10052805B /* Splash */,
 				78FA91B928CCEB770052805B /* Base */,
 			);
@@ -354,6 +364,27 @@
 				78FA965A28CD15140052805B /* Cup.swift */,
 			);
 			path = JSONRepresentations;
+			sourceTree = "<group>";
+		};
+		78FA965C28CD241F0052805B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				78FA965F28CD2BCE0052805B /* TeamBuilder */,
+				78FA91D428CCEBC00052805B /* Dashboard */,
+				78FA965D28CD24490052805B /* MainTabBarController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		78FA965F28CD2BCE0052805B /* TeamBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				78FA966028CD2BEB0052805B /* TeamBuilderVC.swift */,
+				78FA966228CD2BF40052805B /* TeamBuilderEvent.swift */,
+				78FA966428CD2C050052805B /* TeamBuilderState.swift */,
+				78FA966628CD2C180052805B /* TeamBuilderViewModel.swift */,
+			);
+			path = TeamBuilder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -515,6 +546,7 @@
 				78FA91B828CCEB210052805B /* Uninitializable.swift in Sources */,
 				78FA964B28CCFC710052805B /* Archetype.swift in Sources */,
 				78FA91C128CCEB770052805B /* State.swift in Sources */,
+				78FA966728CD2C180052805B /* TeamBuilderViewModel.swift in Sources */,
 				78FA91D928CCEBC00052805B /* DashboardState.swift in Sources */,
 				78FA914228CCE7340052805B /* AppDelegate.swift in Sources */,
 				78FA965B28CD15140052805B /* Cup.swift in Sources */,
@@ -523,6 +555,7 @@
 				78FA91BE28CCEB770052805B /* BaseViewController.swift in Sources */,
 				78FA91D128CCEBA10052805B /* SplashVC.swift in Sources */,
 				78FA91DF28CCED610052805B /* Navigator.swift in Sources */,
+				78FA966328CD2BF40052805B /* TeamBuilderEvent.swift in Sources */,
 				78FA91BF28CCEB770052805B /* Event.swift in Sources */,
 				78FA91A228CCE9C20052805B /* UIAlertController+Dystoria.swift in Sources */,
 				78FA91DB28CCEBC00052805B /* DashboardVC.swift in Sources */,
@@ -532,6 +565,7 @@
 				78FA965328CD004D0052805B /* DefaultIVs.swift in Sources */,
 				78FA91DC28CCEBC00052805B /* DashboardViewModel.swift in Sources */,
 				78FA914C28CCE7340052805B /* pvpoke_ios.xcdatamodeld in Sources */,
+				78FA966128CD2BEB0052805B /* TeamBuilderVC.swift in Sources */,
 				78FA91A028CCE9C20052805B /* UIColor+Dystoria.swift in Sources */,
 				78FA91AF28CCE9C20052805B /* UIFont+Dystoria.swift in Sources */,
 				78FA91B728CCEB210052805B /* ResolvedModule.swift in Sources */,
@@ -539,11 +573,13 @@
 				78FA91D028CCEBA10052805B /* SplashEvent.swift in Sources */,
 				78FA91A928CCE9C20052805B /* UILabel+Dystoria.swift in Sources */,
 				78FA91D328CCEBA10052805B /* SplashViewModel.swift in Sources */,
+				78FA966528CD2C050052805B /* TeamBuilderState.swift in Sources */,
 				78FA965928CD10AC0052805B /* Base.swift in Sources */,
 				78FA91D228CCEBA10052805B /* SplashState.swift in Sources */,
 				78FA965128CCFD700052805B /* Stats.swift in Sources */,
 				78FA91A428CCE9C20052805B /* CGFloat+Dystoria.swift in Sources */,
 				78FA965528CD00D60052805B /* Family.swift in Sources */,
+				78FA965E28CD24490052805B /* MainTabBarController.swift in Sources */,
 				78FA91AA28CCE9C20052805B /* Int+Dystoria.swift in Sources */,
 				78FA91AC28CCE9C20052805B /* CGSize+Dystoria.swift in Sources */,
 				78FA91B328CCE9C20052805B /* UIImage+Dystoria.swift in Sources */,

@@ -9,7 +9,7 @@ import UIKit
 
 enum ViewBuilder {
     case splashScreen
-    case dashboard
+    case main
 }
 
 extension UIViewController {
@@ -34,7 +34,7 @@ extension UIViewController {
         header: String,
         url: String,
         containerNavigationController: UINavigationController? = nil
-    ){
+    ) {
         DispatchQueue.main.async {
             let viewController: UIViewController
             viewController = WebViewVC(header: header, url: url)
@@ -55,8 +55,8 @@ extension UIViewController {
             case .splashScreen:
                 viewController = SplashVC()
                 viewController.modalTransitionStyle = .crossDissolve
-            case .dashboard:
-                viewController = DashboardVC()
+            case .main:
+                viewController = MainTabBarController()
                 viewController.modalTransitionStyle = .crossDissolve
             }
             
