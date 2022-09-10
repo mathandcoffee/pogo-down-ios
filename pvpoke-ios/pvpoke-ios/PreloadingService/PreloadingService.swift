@@ -18,12 +18,14 @@ private final class PreloadingServiceImpl: PreloadingService {
     var testMoves: [Move] = []
     var testFormats: [Format] = []
     var testBase: Base? = nil
+    var testCups: [Cup] = []
     
     func preloadContent() {
-        testPokemon = Pokemon.parseFile([Pokemon].self, fileName: "pokemon") ?? []
-        testMoves = Move.parseFile([Move].self, fileName: "moves") ?? []
-        testFormats = Format.parseFile([Format].self, fileName: "formats") ?? []
-        testBase = Base.parseFile(Base.self, fileName: "base")
+        testPokemon = CodableUtils.parseFile([Pokemon].self, fileName: "pokemon") ?? []
+        testMoves = CodableUtils.parseFile([Move].self, fileName: "moves") ?? []
+        testFormats = CodableUtils.parseFile([Format].self, fileName: "formats") ?? []
+        testBase = CodableUtils.parseFile(Base.self, fileName: "base")
+        testCups = CodableUtils.parseAllFilesInPath(Cup.self, folderPath: "cups")
         print()
     }
 }

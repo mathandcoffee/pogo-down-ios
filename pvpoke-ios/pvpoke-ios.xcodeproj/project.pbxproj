@@ -65,6 +65,7 @@
 		78FA965528CD00D60052805B /* Family.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA965428CD00D60052805B /* Family.swift */; };
 		78FA965728CD06780052805B /* gamemaster in Resources */ = {isa = PBXBuildFile; fileRef = 78FA965628CD06780052805B /* gamemaster */; };
 		78FA965928CD10AC0052805B /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA965828CD10AC0052805B /* Base.swift */; };
+		78FA965B28CD15140052805B /* Cup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA965A28CD15140052805B /* Cup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,7 @@
 		78FA965428CD00D60052805B /* Family.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Family.swift; sourceTree = "<group>"; };
 		78FA965628CD06780052805B /* gamemaster */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gamemaster; sourceTree = "<group>"; };
 		78FA965828CD10AC0052805B /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
+		78FA965A28CD15140052805B /* Cup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,6 +351,7 @@
 				78FA965228CD004D0052805B /* DefaultIVs.swift */,
 				78FA965428CD00D60052805B /* Family.swift */,
 				78FA965828CD10AC0052805B /* Base.swift */,
+				78FA965A28CD15140052805B /* Cup.swift */,
 			);
 			path = JSONRepresentations;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				78FA91C128CCEB770052805B /* State.swift in Sources */,
 				78FA91D928CCEBC00052805B /* DashboardState.swift in Sources */,
 				78FA914228CCE7340052805B /* AppDelegate.swift in Sources */,
+				78FA965B28CD15140052805B /* Cup.swift in Sources */,
 				78FA91E928CCF3650052805B /* PreloadingService.swift in Sources */,
 				78FA964928CCFC070052805B /* PokemonType.swift in Sources */,
 				78FA91BE28CCEB770052805B /* BaseViewController.swift in Sources */,
