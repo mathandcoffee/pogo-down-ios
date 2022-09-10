@@ -8,6 +8,8 @@
 import Foundation
 import Resolver
 
-protocol ResolvedModule: Uninitializable {
+typealias ResolvedModule = Uninitializable & Module
+
+protocol Module: Uninitializable {
     static func register()
 }
