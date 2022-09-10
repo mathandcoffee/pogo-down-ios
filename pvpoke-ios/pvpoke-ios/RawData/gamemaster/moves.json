@@ -1857,7 +1857,7 @@
     "buffs": [0, -1],
     "buffTarget": "opponent",
     "buffApplyChance": "0.5",
-    "archetype": "Spam/Bait Debuff"
+    "archetype": "Debuff Spam/Bait"
 }, {
     "moveId": "REST",
     "name": "Rest",
@@ -2034,7 +2034,7 @@
     "buffs": [0, -2],
 	"buffTarget": "opponent",
     "buffApplyChance": ".4",
-    "archetype": "Nuke Debuff"
+    "archetype": "Debuff Nuke"
 }, {
     "moveId": "SHADOW_BALL",
     "name": "Shadow Ball",

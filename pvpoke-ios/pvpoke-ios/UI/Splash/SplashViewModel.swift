@@ -14,9 +14,10 @@ final class SplashViewModel: BaseViewModel<SplashState, SplashEvent> {
     
     init() {
         super.init(initialState: SplashState())
+        preloadContent()
     }
     
     func preloadContent() {
-        
+        preloadingService.preloadContent()
     }
 }

@@ -14,6 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        setupResolvedModules()
+        
         // Setup Navigation Bar Appearance
         let standard = UINavigationBarAppearance()
         standard.titleTextAttributes = [.foregroundColor: UIColor.white, .backgroundColor: UIColor.surface]
@@ -89,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setupResolvedModules() {
-        withAllClasses { $0.compactMap { $0 as? ResolvedModule.Type } }
+        withAllClasses { $0.compactMap { $0 as? Module.Type } }
             .forEach { $0.register() }
     }
     

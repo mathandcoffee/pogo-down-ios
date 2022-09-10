@@ -14,10 +14,20 @@ extension JSONCodable {
         try! JSONEncoder().encode(self)
     }
     
-    static func decode<T: Codable>(_ type: T.Type, encodedString: String) -> T? {
-        guard let data = encodedString.data(using: .utf8) else {
-            return nil
+    static func jsonFilePath() -> URL? {
+        return Bundle.main.resourceURL?.appendingPathComponent("gamemaster")
+    }
+    
+    static func parseFile<T: Codable>(_ type: T.Type, fileName: String, subdirectory: String) -> T? {
+        if let path = jsonFilePath()?.appendingPathComponent(fileName).appendingPathExtension(for: .json) {
+            do {
+                let data = try Data(contentsOf: path, options: .mappedIfSafe)
+                let jsonResult = try! JSONDecoder().decode(type, from: data)
+                return jsonResult
+              } catch {
+                   return nil
+              }
         }
-        return try? JSONDecoder().decode(type, from: data)
+        return nil
     }
 }
