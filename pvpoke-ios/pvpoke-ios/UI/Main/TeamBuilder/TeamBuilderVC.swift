@@ -17,7 +17,7 @@ final class TeamBuilderVC: BaseViewController {
     var stateSubscription: AnyCancellable?
     var eventSubscription: AnyCancellable?
     
-    let viewModel = TeamBuilderViewModel(initialState: TeamBuilderState(createdAt: Date()))
+    let viewModel = TeamBuilderViewModel()
     
     init() {
         super.init(nibName: nil, bundle: nil)

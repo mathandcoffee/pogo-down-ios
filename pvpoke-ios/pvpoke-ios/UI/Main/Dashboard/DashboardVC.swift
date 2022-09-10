@@ -16,6 +16,8 @@ final class DashboardVC: BaseViewController {
     var stateSubscription: AnyCancellable?
     var eventSubscription: AnyCancellable?
     
+    var viewModel = DashboardViewModel()
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         setupViewModelObservers()
@@ -24,9 +26,7 @@ final class DashboardVC: BaseViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    var viewModel = DashboardViewModel(initialState: DashboardState(createdAt: Date()))
-    
+        
     func renderState(state: DashboardState) {
         
     }

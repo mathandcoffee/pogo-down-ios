@@ -10,14 +10,13 @@ import Resolver
 
 final class SplashViewModel: BaseViewModel<SplashState, SplashEvent> {
     
-    @Injected private var preloadingService: PreloadingService
+    @Injected private var dataLoadingService: DataLoadingService
     
     init() {
         super.init(initialState: SplashState())
     }
     
     func preloadContent() {
-        preloadingService.preloadContent()
         sendEvent(.finishedPreloading())
     }
 }

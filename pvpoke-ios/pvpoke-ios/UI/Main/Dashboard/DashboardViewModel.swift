@@ -9,4 +9,7 @@ import Foundation
 
 final class DashboardViewModel: BaseViewModel<DashboardState, DashboardEvent> {
     
+    init() {
+        super.init(initialState: DashboardState(createdAt: Date()))
+    }
 }

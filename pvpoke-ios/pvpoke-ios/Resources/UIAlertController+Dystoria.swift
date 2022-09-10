@@ -12,6 +12,7 @@ extension UIAlertController {
         presentAlert(animated: true, completion: nil)
     }
 
+    //TODO: Add linter ignore to this warning
     func presentAlert(animated: Bool, completion: (() -> Void)?) {
         if let rootVC = UIApplication.shared.keyWindow?.rootViewController {
             presentFromController(controller: rootVC, animated: animated, completion: completion)

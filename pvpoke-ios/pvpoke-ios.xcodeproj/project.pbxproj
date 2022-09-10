@@ -54,7 +54,7 @@
 		78FA91DF28CCED610052805B /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA91DE28CCED600052805B /* Navigator.swift */; };
 		78FA91E128CCEDD10052805B /* WebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA91E028CCEDD10052805B /* WebViewVC.swift */; };
 		78FA91E428CCEE150052805B /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA91E328CCEE150052805B /* RootNavigationController.swift */; };
-		78FA91E928CCF3650052805B /* PreloadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA91E828CCF3650052805B /* PreloadingService.swift */; };
+		78FA91E928CCF3650052805B /* DataLoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA91E828CCF3650052805B /* DataLoadingService.swift */; };
 		78FA964728CCFBB60052805B /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA964628CCFBB60052805B /* Move.swift */; };
 		78FA964928CCFC070052805B /* PokemonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA964828CCFC070052805B /* PokemonType.swift */; };
 		78FA964B28CCFC710052805B /* Archetype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA964A28CCFC710052805B /* Archetype.swift */; };
@@ -71,6 +71,7 @@
 		78FA966328CD2BF40052805B /* TeamBuilderEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA966228CD2BF40052805B /* TeamBuilderEvent.swift */; };
 		78FA966528CD2C050052805B /* TeamBuilderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA966428CD2C050052805B /* TeamBuilderState.swift */; };
 		78FA966728CD2C180052805B /* TeamBuilderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA966628CD2C180052805B /* TeamBuilderViewModel.swift */; };
+		78FA966928CD3C960052805B /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA966828CD3C960052805B /* Group.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,7 +134,7 @@
 		78FA91DE28CCED600052805B /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		78FA91E028CCEDD10052805B /* WebViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewVC.swift; sourceTree = "<group>"; };
 		78FA91E328CCEE150052805B /* RootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
-		78FA91E828CCF3650052805B /* PreloadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadingService.swift; sourceTree = "<group>"; };
+		78FA91E828CCF3650052805B /* DataLoadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingService.swift; sourceTree = "<group>"; };
 		78FA964628CCFBB60052805B /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		78FA964828CCFC070052805B /* PokemonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonType.swift; sourceTree = "<group>"; };
 		78FA964A28CCFC710052805B /* Archetype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archetype.swift; sourceTree = "<group>"; };
@@ -150,6 +151,7 @@
 		78FA966228CD2BF40052805B /* TeamBuilderEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamBuilderEvent.swift; sourceTree = "<group>"; };
 		78FA966428CD2C050052805B /* TeamBuilderState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamBuilderState.swift; sourceTree = "<group>"; };
 		78FA966628CD2C180052805B /* TeamBuilderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamBuilderViewModel.swift; sourceTree = "<group>"; };
+		78FA966828CD3C960052805B /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,7 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				78FA91EA28CCF77C0052805B /* RawData */,
-				78FA91E728CCF3580052805B /* PreloadingService */,
+				78FA91E728CCF3580052805B /* DataLoadingService */,
 				78FA91DD28CCED600052805B /* NavigationService */,
 				78FA91B428CCEB210052805B /* Resolver */,
 				78FA918B28CCE9C20052805B /* Resources */,
@@ -332,12 +334,12 @@
 			path = HelperViewControllers;
 			sourceTree = "<group>";
 		};
-		78FA91E728CCF3580052805B /* PreloadingService */ = {
+		78FA91E728CCF3580052805B /* DataLoadingService */ = {
 			isa = PBXGroup;
 			children = (
-				78FA91E828CCF3650052805B /* PreloadingService.swift */,
+				78FA91E828CCF3650052805B /* DataLoadingService.swift */,
 			);
-			path = PreloadingService;
+			path = DataLoadingService;
 			sourceTree = "<group>";
 		};
 		78FA91EA28CCF77C0052805B /* RawData */ = {
@@ -362,6 +364,7 @@
 				78FA965428CD00D60052805B /* Family.swift */,
 				78FA965828CD10AC0052805B /* Base.swift */,
 				78FA965A28CD15140052805B /* Cup.swift */,
+				78FA966828CD3C960052805B /* Group.swift */,
 			);
 			path = JSONRepresentations;
 			sourceTree = "<group>";
@@ -550,7 +553,8 @@
 				78FA91D928CCEBC00052805B /* DashboardState.swift in Sources */,
 				78FA914228CCE7340052805B /* AppDelegate.swift in Sources */,
 				78FA965B28CD15140052805B /* Cup.swift in Sources */,
-				78FA91E928CCF3650052805B /* PreloadingService.swift in Sources */,
+				78FA91E928CCF3650052805B /* DataLoadingService.swift in Sources */,
+				78FA966928CD3C960052805B /* Group.swift in Sources */,
 				78FA964928CCFC070052805B /* PokemonType.swift in Sources */,
 				78FA91BE28CCEB770052805B /* BaseViewController.swift in Sources */,
 				78FA91D128CCEBA10052805B /* SplashVC.swift in Sources */,

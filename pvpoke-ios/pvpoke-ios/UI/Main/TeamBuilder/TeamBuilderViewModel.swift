@@ -6,7 +6,20 @@
 //
 
 import Foundation
+import Resolver
 
 final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEvent> {
+    
+    @Injected private var dataLoadingService: DataLoadingService
+    
+    init() {
+        super.init(
+            initialState: TeamBuilderState(
+                createdAt: Date(),
+                currentPokemonSelection: []
+            )
+        )
+    }
+    
     
 }
