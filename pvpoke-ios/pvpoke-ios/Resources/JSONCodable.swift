@@ -14,14 +14,15 @@ extension JSONCodable {
         try! JSONEncoder().encode(self)
     }
     
-    static func jsonFilePath() -> URL? {
+    private static func jsonFilePath() -> URL? {
         return Bundle.main.resourceURL?.appendingPathComponent("gamemaster")
     }
     
-    static func parseFile<T: Codable>(_ type: T.Type, fileName: String, subdirectory: String) -> T? {
+    static func parseFile<T: Codable>(_ type: T.Type, fileName: String) -> T? {
         if let path = jsonFilePath()?.appendingPathComponent(fileName).appendingPathExtension(for: .json) {
             do {
                 let data = try Data(contentsOf: path, options: .mappedIfSafe)
+                //TODO: Remove this force unwrap when testing is done
                 let jsonResult = try! JSONDecoder().decode(type, from: data)
                 return jsonResult
               } catch {

@@ -64,6 +64,7 @@
 		78FA965328CD004D0052805B /* DefaultIVs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA965228CD004D0052805B /* DefaultIVs.swift */; };
 		78FA965528CD00D60052805B /* Family.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA965428CD00D60052805B /* Family.swift */; };
 		78FA965728CD06780052805B /* gamemaster in Resources */ = {isa = PBXBuildFile; fileRef = 78FA965628CD06780052805B /* gamemaster */; };
+		78FA965928CD10AC0052805B /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA965828CD10AC0052805B /* Base.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +137,7 @@
 		78FA965228CD004D0052805B /* DefaultIVs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultIVs.swift; sourceTree = "<group>"; };
 		78FA965428CD00D60052805B /* Family.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Family.swift; sourceTree = "<group>"; };
 		78FA965628CD06780052805B /* gamemaster */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gamemaster; sourceTree = "<group>"; };
+		78FA965828CD10AC0052805B /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,6 +348,7 @@
 				78FA965028CCFD700052805B /* Stats.swift */,
 				78FA965228CD004D0052805B /* DefaultIVs.swift */,
 				78FA965428CD00D60052805B /* Family.swift */,
+				78FA965828CD10AC0052805B /* Base.swift */,
 			);
 			path = JSONRepresentations;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				78FA91D028CCEBA10052805B /* SplashEvent.swift in Sources */,
 				78FA91A928CCE9C20052805B /* UILabel+Dystoria.swift in Sources */,
 				78FA91D328CCEBA10052805B /* SplashViewModel.swift in Sources */,
+				78FA965928CD10AC0052805B /* Base.swift in Sources */,
 				78FA91D228CCEBA10052805B /* SplashState.swift in Sources */,
 				78FA965128CCFD700052805B /* Stats.swift in Sources */,
 				78FA91A428CCE9C20052805B /* CGFloat+Dystoria.swift in Sources */,
