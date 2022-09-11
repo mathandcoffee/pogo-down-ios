@@ -17,13 +17,6 @@
 		78FA916828CCE7360052805B /* pvpoke_iosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA916728CCE7360052805B /* pvpoke_iosUITestsLaunchTests.swift */; };
 		78FA917628CCE7880052805B /* Resolver-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 78FA917528CCE7880052805B /* Resolver-Dynamic */; };
 		78FA917A28CCE7D70052805B /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 78FA917928CCE7D70052805B /* SnapKit-Dynamic */; };
-		78FA917D28CCE8080052805B /* Epoxy in Frameworks */ = {isa = PBXBuildFile; productRef = 78FA917C28CCE8080052805B /* Epoxy */; };
-		78FA917F28CCE8080052805B /* EpoxyBars in Frameworks */ = {isa = PBXBuildFile; productRef = 78FA917E28CCE8080052805B /* EpoxyBars */; };
-		78FA918128CCE8080052805B /* EpoxyCollectionView in Frameworks */ = {isa = PBXBuildFile; productRef = 78FA918028CCE8080052805B /* EpoxyCollectionView */; };
-		78FA918328CCE8080052805B /* EpoxyCore in Frameworks */ = {isa = PBXBuildFile; productRef = 78FA918228CCE8080052805B /* EpoxyCore */; };
-		78FA918528CCE8080052805B /* EpoxyLayoutGroups in Frameworks */ = {isa = PBXBuildFile; productRef = 78FA918428CCE8080052805B /* EpoxyLayoutGroups */; };
-		78FA918728CCE8080052805B /* EpoxyNavigationController in Frameworks */ = {isa = PBXBuildFile; productRef = 78FA918628CCE8080052805B /* EpoxyNavigationController */; };
-		78FA918928CCE8080052805B /* EpoxyPresentations in Frameworks */ = {isa = PBXBuildFile; productRef = 78FA918828CCE8080052805B /* EpoxyPresentations */; };
 		78FA91A028CCE9C20052805B /* UIColor+Dystoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA918C28CCE9C20052805B /* UIColor+Dystoria.swift */; };
 		78FA91A228CCE9C20052805B /* UIAlertController+Dystoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA918E28CCE9C20052805B /* UIAlertController+Dystoria.swift */; };
 		78FA91A328CCE9C20052805B /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78FA918F28CCE9C20052805B /* Roboto-Regular.ttf */; };
@@ -78,6 +71,7 @@
 		78FA967228CD69860052805B /* InfoEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA967128CD69860052805B /* InfoEvent.swift */; };
 		78FA967528CD6D4B0052805B /* TeamBuilderAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA967428CD6D4B0052805B /* TeamBuilderAnalytics.swift */; };
 		78FA967828CD6DEE0052805B /* TeamBuilderResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA967728CD6DEE0052805B /* TeamBuilderResults.swift */; };
+		78FA967B28CD7F7F0052805B /* EpoxyCollectionView in Frameworks */ = {isa = PBXBuildFile; productRef = 78FA967A28CD7F7F0052805B /* EpoxyCollectionView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,15 +165,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78FA918128CCE8080052805B /* EpoxyCollectionView in Frameworks */,
-				78FA918528CCE8080052805B /* EpoxyLayoutGroups in Frameworks */,
-				78FA918728CCE8080052805B /* EpoxyNavigationController in Frameworks */,
-				78FA917D28CCE8080052805B /* Epoxy in Frameworks */,
 				78FA917628CCE7880052805B /* Resolver-Dynamic in Frameworks */,
-				78FA918328CCE8080052805B /* EpoxyCore in Frameworks */,
-				78FA917F28CCE8080052805B /* EpoxyBars in Frameworks */,
 				78FA917A28CCE7D70052805B /* SnapKit-Dynamic in Frameworks */,
-				78FA918928CCE8080052805B /* EpoxyPresentations in Frameworks */,
+				78FA967B28CD7F7F0052805B /* EpoxyCollectionView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,13 +439,7 @@
 			packageProductDependencies = (
 				78FA917528CCE7880052805B /* Resolver-Dynamic */,
 				78FA917928CCE7D70052805B /* SnapKit-Dynamic */,
-				78FA917C28CCE8080052805B /* Epoxy */,
-				78FA917E28CCE8080052805B /* EpoxyBars */,
-				78FA918028CCE8080052805B /* EpoxyCollectionView */,
-				78FA918228CCE8080052805B /* EpoxyCore */,
-				78FA918428CCE8080052805B /* EpoxyLayoutGroups */,
-				78FA918628CCE8080052805B /* EpoxyNavigationController */,
-				78FA918828CCE8080052805B /* EpoxyPresentations */,
+				78FA967A28CD7F7F0052805B /* EpoxyCollectionView */,
 			);
 			productName = "pvpoke-ios";
 			productReference = 78FA913E28CCE7340052805B /* pvpoke-ios.app */;
@@ -534,7 +516,7 @@
 			packageReferences = (
 				78FA917428CCE7880052805B /* XCRemoteSwiftPackageReference "Resolver" */,
 				78FA917828CCE7D70052805B /* XCRemoteSwiftPackageReference "SnapKit" */,
-				78FA917B28CCE8080052805B /* XCRemoteSwiftPackageReference "epoxy-ios" */,
+				78FA967928CD7F7E0052805B /* XCRemoteSwiftPackageReference "epoxy-ios" */,
 			);
 			productRefGroup = 78FA913F28CCE7340052805B /* Products */;
 			projectDirPath = "";
@@ -986,7 +968,7 @@
 				kind = branch;
 			};
 		};
-		78FA917B28CCE8080052805B /* XCRemoteSwiftPackageReference "epoxy-ios" */ = {
+		78FA967928CD7F7E0052805B /* XCRemoteSwiftPackageReference "epoxy-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/epoxy-ios";
 			requirement = {
@@ -1007,40 +989,10 @@
 			package = 78FA917828CCE7D70052805B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
 		};
-		78FA917C28CCE8080052805B /* Epoxy */ = {
+		78FA967A28CD7F7F0052805B /* EpoxyCollectionView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 78FA917B28CCE8080052805B /* XCRemoteSwiftPackageReference "epoxy-ios" */;
-			productName = Epoxy;
-		};
-		78FA917E28CCE8080052805B /* EpoxyBars */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 78FA917B28CCE8080052805B /* XCRemoteSwiftPackageReference "epoxy-ios" */;
-			productName = EpoxyBars;
-		};
-		78FA918028CCE8080052805B /* EpoxyCollectionView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 78FA917B28CCE8080052805B /* XCRemoteSwiftPackageReference "epoxy-ios" */;
+			package = 78FA967928CD7F7E0052805B /* XCRemoteSwiftPackageReference "epoxy-ios" */;
 			productName = EpoxyCollectionView;
-		};
-		78FA918228CCE8080052805B /* EpoxyCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 78FA917B28CCE8080052805B /* XCRemoteSwiftPackageReference "epoxy-ios" */;
-			productName = EpoxyCore;
-		};
-		78FA918428CCE8080052805B /* EpoxyLayoutGroups */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 78FA917B28CCE8080052805B /* XCRemoteSwiftPackageReference "epoxy-ios" */;
-			productName = EpoxyLayoutGroups;
-		};
-		78FA918628CCE8080052805B /* EpoxyNavigationController */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 78FA917B28CCE8080052805B /* XCRemoteSwiftPackageReference "epoxy-ios" */;
-			productName = EpoxyNavigationController;
-		};
-		78FA918828CCE8080052805B /* EpoxyPresentations */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 78FA917B28CCE8080052805B /* XCRemoteSwiftPackageReference "epoxy-ios" */;
-			productName = EpoxyPresentations;
 		};
 /* End XCSwiftPackageProductDependency section */
 
