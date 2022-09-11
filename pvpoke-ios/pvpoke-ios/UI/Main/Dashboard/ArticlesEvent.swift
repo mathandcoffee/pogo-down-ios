@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum DashboardEvent: Event {
+enum ArticlesEvent: Event {
     
 }

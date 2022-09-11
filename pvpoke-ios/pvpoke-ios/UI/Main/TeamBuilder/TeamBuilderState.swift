@@ -10,4 +10,5 @@ import Foundation
 struct TeamBuilderState: State {
     let createdAt: Date
     let currentPokemonSelection: [Pokemon]
+    let groupNames: [String]
 }

@@ -16,10 +16,38 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
         super.init(
             initialState: TeamBuilderState(
                 createdAt: Date(),
-                currentPokemonSelection: []
+                currentPokemonSelection: [],
+                groupNames: []
+            )
+        )
+        getGroups()
+        selectGroup(groupIndex: 2)
+    }
+    
+    private func getGroups() {
+        setState(
+            TeamBuilderState(
+                createdAt: Date(),
+                currentPokemonSelection: currentState.currentPokemonSelection,
+                groupNames: dataLoadingService.groups.map { $0.name }
             )
         )
     }
     
-    
+    func selectGroup(groupIndex: Int) {
+        let groupSelection = Set(dataLoadingService.groups[groupIndex].pokemonListings.map { $0.speciesId })
+        var pokemonSelection: [Pokemon] = []
+        for pokemon in dataLoadingService.pokemon {
+            if groupSelection.contains(pokemon.speciesId) {
+                pokemonSelection.append(pokemon)
+            }
+        }
+        setState(
+            TeamBuilderState(
+                createdAt: Date(),
+                currentPokemonSelection: pokemonSelection,
+                groupNames: currentState.groupNames
+            )
+        )
+    }
 }

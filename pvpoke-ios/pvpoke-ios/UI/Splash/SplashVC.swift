@@ -39,7 +39,7 @@ final class SplashVC: BaseViewController {
     }
     
     func renderState(state: SplashState) {
-        //setup loading indicator state based on state handed
+        //TODO: setup loading indicator state based on state handed
     }
     
     func handleEvent(event: SplashEvent) {
@@ -53,6 +53,6 @@ final class SplashVC: BaseViewController {
     }
     
     func setupView() {
-        
+        view.backgroundColor = .background
     }
 }

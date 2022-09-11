@@ -1,23 +1,23 @@
 //
-//  TeamBuilderVC.swift
+//  InfoVC.swift
 //  pvpoke-ios
 //
 //  Created by Bryan Malumphy on 9/10/22.
 //
 
-import UIKit
+import Foundation
 import Combine
 
-final class TeamBuilderVC: BaseViewController {
-    
-    typealias STATE = TeamBuilderState
-    typealias EVENT = TeamBuilderEvent
-    typealias VIEWMODEL = TeamBuilderViewModel
+final class InfoVC: BaseViewController {
+    typealias STATE = InfoState
+    typealias EVENT = InfoEvent
+    typealias VIEWMODEL = InfoViewModel
     
     var stateSubscription: AnyCancellable?
+    
     var eventSubscription: AnyCancellable?
     
-    let viewModel = TeamBuilderViewModel()
+    let viewModel = InfoViewModel()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -29,11 +29,11 @@ final class TeamBuilderVC: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func renderState(state: TeamBuilderState) {
+    func renderState(state: InfoState) {
         
     }
     
-    func handleEvent(event: TeamBuilderEvent) {
+    func handleEvent(event: InfoEvent) {
         
     }
     

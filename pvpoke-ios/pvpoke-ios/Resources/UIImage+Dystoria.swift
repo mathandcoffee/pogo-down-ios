@@ -21,11 +21,19 @@ extension UIImage {
         return imageWithName("back").withRenderingMode(.alwaysTemplate)
     }
     
-    static var dashboardIcon: UIImage {
+    static var articlesIcon: UIImage {
         return imageWithName("dashboard-dashboard_symbol")
     }
     
     static var teamBuilderIcon: UIImage {
         return imageWithName("atr-atr_symbol")
+    }
+    
+    static var infoIcon: UIImage {
+        return imageWithName("info-info_symbol")
+    }
+    
+    static var settingsIcon: UIImage {
+        return imageWithName("settings-settings_symbol")
     }
 }

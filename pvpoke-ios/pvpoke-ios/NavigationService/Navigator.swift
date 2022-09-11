@@ -65,7 +65,7 @@ extension UIViewController {
                 let navController = RootNavigationController(rootViewController: viewController)
                 navController.modalTransitionStyle = .crossDissolve
                 navController.modalPresentationStyle = .fullScreen
-                if viewController is DashboardVC {
+                if viewController is ArticlesVC {
                     navController.interactivePopGestureRecognizer?.isEnabled = false
                 } else {
                     navController.interactivePopGestureRecognizer?.isEnabled = true
@@ -73,7 +73,7 @@ extension UIViewController {
                 self.present(navController, animated: true, completion: nil)
                 return
             }
-            if viewController is DashboardVC {
+            if viewController is ArticlesVC {
                 self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
             } else {
                 self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true

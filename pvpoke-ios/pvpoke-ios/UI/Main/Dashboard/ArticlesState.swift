@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct DashboardState: State {
+struct ArticlesState: State {
     let createdAt: Date
 }

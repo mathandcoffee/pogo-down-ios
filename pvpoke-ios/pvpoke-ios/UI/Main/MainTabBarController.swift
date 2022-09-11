@@ -19,15 +19,22 @@ final class MainTabBarController: UITabBarController {
     }
     
     private func setupViews() {
-        let dashboard = DashboardVC()
-        dashboard.tabBarItem = UITabBarItem(title: "Dashboard", image: .dashboardIcon, tag: 0)
+        // TODO: Determine full functionality of DashboardVC (probably articles from PvPoke)
+        let articlesVC = ArticlesVC()
+        articlesVC.tabBarItem = UITabBarItem(title: "Articles", image: .articlesIcon, tag: 0)
         
         let teamBuilderVC = TeamBuilderVC()
         teamBuilderVC.tabBarItem = UITabBarItem(title: "Teams", image: .teamBuilderIcon, tag: 1)
         
+        let infoVC = InfoVC()
+        infoVC.tabBarItem = UITabBarItem(title: "Info", image: .infoIcon, tag: 2)
+        
         viewControllers = [
-            dashboard,
-            teamBuilderVC
+            teamBuilderVC,
+            articlesVC,
+            infoVC
         ]
+        
+        view.backgroundColor = .background
     }
 }

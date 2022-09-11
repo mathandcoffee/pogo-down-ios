@@ -17,6 +17,7 @@ final class SplashViewModel: BaseViewModel<SplashState, SplashEvent> {
     }
     
     func preloadContent() {
+        //TODO: Handle CoreData loading here potentially
         sendEvent(.finishedPreloading())
     }
 }

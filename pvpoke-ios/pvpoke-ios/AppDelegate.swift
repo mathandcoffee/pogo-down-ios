@@ -28,6 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UINavigationBar.appearance().standardAppearance = standard
         
+        UITabBar.appearance().barTintColor = .lightBackground
+        UITabBar.appearance().backgroundColor = .surface
+        UITabBar.appearance().tintColor = .onBackground
+        
         return true
     }
 
