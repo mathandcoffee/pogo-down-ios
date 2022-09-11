@@ -76,7 +76,15 @@ extension TeamBuilderVC: UICollectionViewDelegate, UICollectionViewDataSource, U
         ) as? PokemonCollectionViewCell else { fatalError() }
         
         let pokemon = viewModel.currentState.currentPokemonSelection[indexPath.row]
-        cell.configure(tintColor: .getColorForPokemonType(pokemonType: pokemon.types[0]), name: pokemon.speciesName, fastMove: pokemon.fastMoves[0], strongMoves: pokemon.chargedMoves)
+        let fastMove = viewModel.currentState.moves.first(where: {
+            $0.moveId == pokemon.fastMoves[0]
+        })?.name ?? ""
+        let chargedMoves = viewModel.currentState.moves.filter {
+            pokemon.chargedMoves.contains($0.moveId)
+        }.map {
+            $0.name
+        }
+        cell.configure(tintColor: .getColorForPokemonType(pokemonType: pokemon.types[0]), name: pokemon.speciesName, fastMove: fastMove, strongMoves: chargedMoves)
         return cell
     }
     
@@ -87,7 +95,7 @@ extension TeamBuilderVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     ) -> CGSize {
         let pokemon = viewModel.currentState.currentPokemonSelection[indexPath.row]
 
-        let height = PokemonCollectionViewCell.height(for: pokemon, collectionView: collectionView)
+        let height = PokemonCollectionViewCell.height(name: pokemon.speciesName, fastMove: pokemon.fastMoves[0], chargedMoves: pokemon.chargedMoves, collectionView: collectionView)
         
         return CGSize(width: collectionView.frame.width, height: height)
     }

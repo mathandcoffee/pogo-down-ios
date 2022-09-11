@@ -11,7 +11,7 @@ final class PokemonCollectionViewCell: UICollectionViewCell {
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .background
+        label.textColor = .onBackground
         label.font = .headline2
         label.textAlignment = .left
         label.numberOfLines = 1
@@ -21,11 +21,10 @@ final class PokemonCollectionViewCell: UICollectionViewCell {
     
     private lazy var movesLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .background
-        label.font = .headline4
+        label.textColor = .onBackground
+        label.font = .body2
         label.textAlignment = .left
         label.numberOfLines = 2
-        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
@@ -40,18 +39,19 @@ final class PokemonCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupUI() {
+        layer.cornerRadius = 8
+        layer.borderWidth = 2
         
         addSubview(nameLabel)
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide)
-            make.width.leading.equalToSuperview()
+            make.trailing.leading.top.equalToSuperview().inset(16.0)
             make.height.equalTo(36)
         }
         
         addSubview(movesLabel)
         movesLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom)
-            make.width.leading.bottom.equalToSuperview()
+            make.top.equalTo(nameLabel.snp.bottom).offset(4.0)
+            make.trailing.leading.bottom.equalToSuperview().inset(16.0)
             make.height.equalTo(48)
         }
     }
@@ -62,15 +62,20 @@ final class PokemonCollectionViewCell: UICollectionViewCell {
         fastMove: String,
         strongMoves: [String]
     ) {
-        backgroundColor = tintColor
+        backgroundColor = tintColor.withAlphaComponent(0.7)
+        layer.borderColor = tintColor.cgColor
         nameLabel.text = name
-        movesLabel.text = "\(fastMove)\n\(strongMoves[0]), \(strongMoves[1])"
+        movesLabel.text = "Fast Move: \(fastMove)\nCharged Moves: \(strongMoves[0]), \(strongMoves[1])"
     }
     
-    static func height(for pokemon: Pokemon, collectionView: UICollectionView) -> CGFloat {
+    private static func movesString(fastMove: String, strongMoves: [String]) -> String {
+        return "Fast Move: \(fastMove)\nCharged Moves: \(strongMoves[0]), \(strongMoves[1])"
+    }
+    
+    static func height(name: String, fastMove: String, chargedMoves: [String], collectionView: UICollectionView) -> CGFloat {
         let textWidth = collectionView.frame.width - 32
-        let textHeight = pokemon.speciesName.height(withConstrainedWidth: textWidth, font: .headline2)
-            + pokemon.fastMoves[0].height(withConstrainedWidth: textWidth, font: .headline4) * 2
+        let textHeight = name.height(withConstrainedWidth: textWidth, font: .headline2)
+        + movesString(fastMove: fastMove, strongMoves: chargedMoves).height(withConstrainedWidth: textWidth, font: .body2) * 2 + 16
         return textHeight
     }
 }

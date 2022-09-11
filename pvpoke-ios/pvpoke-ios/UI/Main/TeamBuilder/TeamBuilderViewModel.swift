@@ -17,18 +17,20 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
             initialState: TeamBuilderState(
                 createdAt: Date(),
                 currentPokemonSelection: [],
-                groupNames: []
+                groupNames: [],
+                moves: []
             )
         )
-        getGroups()
+        getData()
     }
     
-    private func getGroups() {
+    private func getData() {
         setState(
             TeamBuilderState(
                 createdAt: Date(),
                 currentPokemonSelection: currentState.currentPokemonSelection,
-                groupNames: dataLoadingService.groups.map { $0.name }
+                groupNames: dataLoadingService.groups.map { $0.name },
+                moves: dataLoadingService.moves
             )
         )
     }
@@ -45,7 +47,8 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
             TeamBuilderState(
                 createdAt: Date(),
                 currentPokemonSelection: pokemonSelection,
-                groupNames: currentState.groupNames
+                groupNames: currentState.groupNames,
+                moves: currentState.moves
             )
         )
     }

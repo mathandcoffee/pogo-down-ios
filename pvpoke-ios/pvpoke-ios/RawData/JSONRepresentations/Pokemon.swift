@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Epoxy
 
 /**
  "dex": 1,
