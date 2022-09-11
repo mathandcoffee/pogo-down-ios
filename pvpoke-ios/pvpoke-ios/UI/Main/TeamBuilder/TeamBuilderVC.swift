@@ -37,7 +37,7 @@ final class TeamBuilderVC: BaseViewController {
         super.init(nibName: nil, bundle: nil)
         setupViewModelObservers()
         setupView()
-        viewModel.selectGroup(groupIndex: 2)
+        viewModel.selectGroup(groupIndex: 13)
     }
     
     required init?(coder: NSCoder) {
