@@ -71,7 +71,9 @@
 		78FA967228CD69860052805B /* InfoEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA967128CD69860052805B /* InfoEvent.swift */; };
 		78FA967528CD6D4B0052805B /* TeamBuilderAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA967428CD6D4B0052805B /* TeamBuilderAnalytics.swift */; };
 		78FA967828CD6DEE0052805B /* TeamBuilderResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA967728CD6DEE0052805B /* TeamBuilderResults.swift */; };
-		78FA967B28CD7F7F0052805B /* EpoxyCollectionView in Frameworks */ = {isa = PBXBuildFile; productRef = 78FA967A28CD7F7F0052805B /* EpoxyCollectionView */; };
+		78FA968B28CDFEF80052805B /* UICollectionViewCell+Dystoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA968A28CDFEF80052805B /* UICollectionViewCell+Dystoria.swift */; };
+		78FA968E28CDFF430052805B /* PokemonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA968D28CDFF430052805B /* PokemonCollectionViewCell.swift */; };
+		78FA969028CE03990052805B /* String+Dystoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA968F28CE03990052805B /* String+Dystoria.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +160,9 @@
 		78FA967128CD69860052805B /* InfoEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoEvent.swift; sourceTree = "<group>"; };
 		78FA967428CD6D4B0052805B /* TeamBuilderAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamBuilderAnalytics.swift; sourceTree = "<group>"; };
 		78FA967728CD6DEE0052805B /* TeamBuilderResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamBuilderResults.swift; sourceTree = "<group>"; };
+		78FA968A28CDFEF80052805B /* UICollectionViewCell+Dystoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Dystoria.swift"; sourceTree = "<group>"; };
+		78FA968D28CDFF430052805B /* PokemonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionViewCell.swift; sourceTree = "<group>"; };
+		78FA968F28CE03990052805B /* String+Dystoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Dystoria.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,7 +172,6 @@
 			files = (
 				78FA917628CCE7880052805B /* Resolver-Dynamic in Frameworks */,
 				78FA917A28CCE7D70052805B /* SnapKit-Dynamic in Frameworks */,
-				78FA967B28CD7F7F0052805B /* EpoxyCollectionView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +252,7 @@
 		78FA918A28CCE9AB0052805B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				78FA968C28CDFF340052805B /* CollectionView */,
 				78FA965C28CD241F0052805B /* Main */,
 				78FA91E228CCEDD60052805B /* HelperViewControllers */,
 				78FA91CB28CCEBA10052805B /* Splash */,
@@ -272,6 +277,8 @@
 				78FA919D28CCE9C20052805B /* Roboto-Bold.ttf */,
 				78FA919E28CCE9C20052805B /* Roboto-Black.ttf */,
 				78FA919F28CCE9C20052805B /* UIImage+Dystoria.swift */,
+				78FA968A28CDFEF80052805B /* UICollectionViewCell+Dystoria.swift */,
+				78FA968F28CE03990052805B /* String+Dystoria.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -420,6 +427,14 @@
 			path = Results;
 			sourceTree = "<group>";
 		};
+		78FA968C28CDFF340052805B /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				78FA968D28CDFF430052805B /* PokemonCollectionViewCell.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -439,7 +454,6 @@
 			packageProductDependencies = (
 				78FA917528CCE7880052805B /* Resolver-Dynamic */,
 				78FA917928CCE7D70052805B /* SnapKit-Dynamic */,
-				78FA967A28CD7F7F0052805B /* EpoxyCollectionView */,
 			);
 			productName = "pvpoke-ios";
 			productReference = 78FA913E28CCE7340052805B /* pvpoke-ios.app */;
@@ -516,7 +530,6 @@
 			packageReferences = (
 				78FA917428CCE7880052805B /* XCRemoteSwiftPackageReference "Resolver" */,
 				78FA917828CCE7D70052805B /* XCRemoteSwiftPackageReference "SnapKit" */,
-				78FA967928CD7F7E0052805B /* XCRemoteSwiftPackageReference "epoxy-ios" */,
 			);
 			productRefGroup = 78FA913F28CCE7340052805B /* Products */;
 			projectDirPath = "";
@@ -567,11 +580,13 @@
 				78FA91B028CCE9C20052805B /* JSONCodable.swift in Sources */,
 				78FA91E128CCEDD10052805B /* WebViewVC.swift in Sources */,
 				78FA964D28CCFD090052805B /* Format.swift in Sources */,
+				78FA968E28CDFF430052805B /* PokemonCollectionViewCell.swift in Sources */,
 				78FA967028CD697C0052805B /* InfoState.swift in Sources */,
 				78FA91C028CCEB770052805B /* BaseViewModel.swift in Sources */,
 				78FA91DA28CCEBC00052805B /* ArticlesEvent.swift in Sources */,
 				78FA964F28CCFD200052805B /* Pokemon.swift in Sources */,
 				78FA91B828CCEB210052805B /* Uninitializable.swift in Sources */,
+				78FA969028CE03990052805B /* String+Dystoria.swift in Sources */,
 				78FA964B28CCFC710052805B /* Archetype.swift in Sources */,
 				78FA91C128CCEB770052805B /* State.swift in Sources */,
 				78FA966728CD2C180052805B /* TeamBuilderViewModel.swift in Sources */,
@@ -617,6 +632,7 @@
 				78FA967228CD69860052805B /* InfoEvent.swift in Sources */,
 				78FA91AC28CCE9C20052805B /* CGSize+Dystoria.swift in Sources */,
 				78FA91B328CCE9C20052805B /* UIImage+Dystoria.swift in Sources */,
+				78FA968B28CDFEF80052805B /* UICollectionViewCell+Dystoria.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -968,14 +984,6 @@
 				kind = branch;
 			};
 		};
-		78FA967928CD7F7E0052805B /* XCRemoteSwiftPackageReference "epoxy-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/epoxy-ios";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -988,11 +996,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 78FA917828CCE7D70052805B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
-		};
-		78FA967A28CD7F7F0052805B /* EpoxyCollectionView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 78FA967928CD7F7E0052805B /* XCRemoteSwiftPackageReference "epoxy-ios" */;
-			productName = EpoxyCollectionView;
 		};
 /* End XCSwiftPackageProductDependency section */
 

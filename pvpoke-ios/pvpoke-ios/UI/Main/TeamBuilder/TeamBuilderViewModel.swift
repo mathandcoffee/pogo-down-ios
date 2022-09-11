@@ -21,7 +21,6 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
             )
         )
         getGroups()
-        selectGroup(groupIndex: 2)
     }
     
     private func getGroups() {
