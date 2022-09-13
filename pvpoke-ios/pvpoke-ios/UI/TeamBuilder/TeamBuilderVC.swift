@@ -35,9 +35,8 @@ final class TeamBuilderVC: BaseViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        setupViewModelObservers()
         setupView()
-        viewModel.selectGroup(groupIndex: 13)
+        setupViewModelObservers()
     }
     
     required init?(coder: NSCoder) {
@@ -64,9 +63,13 @@ final class TeamBuilderVC: BaseViewController {
             make.top.bottom.leading.trailing.height.width.equalTo(view.safeAreaLayoutGuide)
         }
     }
+    
+    func setTeam(id: Int) {
+        viewModel.retrieveTeamWithId(id)
+    }
 }
 
-extension TeamBuilderVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension TeamBuilderVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: UICollectionViewCell.cellIdentifierForType(

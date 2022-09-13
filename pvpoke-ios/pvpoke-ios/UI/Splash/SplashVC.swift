@@ -18,6 +18,13 @@ final class SplashVC: BaseViewController {
     var stateSubscription: AnyCancellable?
     var eventSubscription: AnyCancellable?
     
+    private lazy var logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = .logo.withTintColor(.onBackground)
+        return imageView
+    }()
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         setupViewModelObservers()
@@ -33,7 +40,7 @@ final class SplashVC: BaseViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2.0) {
             self.viewModel.preloadContent()
         }
     }
@@ -54,5 +61,11 @@ final class SplashVC: BaseViewController {
     
     func setupView() {
         view.backgroundColor = .background
+        
+        view.addSubview(logoImageView)
+        logoImageView.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+            make.width.height.equalTo(300)
+        }
     }
 }

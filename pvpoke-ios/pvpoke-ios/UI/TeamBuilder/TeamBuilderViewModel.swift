@@ -12,6 +12,13 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
     
     @Injected private var dataLoadingService: DataLoadingService
     
+    private lazy var testTeams: [Team] = [
+        Team(id: 0, name: "Basic Team", pokemon: [dataLoadingService.pokemon[0], dataLoadingService.pokemon[1], dataLoadingService.pokemon[2]],
+             cup: dataLoadingService.cups.first),
+        Team(id: 1, name: "Snuffle", pokemon: [dataLoadingService.pokemon[3], dataLoadingService.pokemon[4], dataLoadingService.pokemon[5]],
+             cup: dataLoadingService.cups.first)
+    ]
+    
     init() {
         super.init(
             initialState: TeamBuilderState(
@@ -35,18 +42,11 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
         )
     }
     
-    func selectGroup(groupIndex: Int) {
-        let groupSelection = Set(dataLoadingService.groups[groupIndex].pokemonListings.map { $0.speciesId })
-        var pokemonSelection: [Pokemon] = []
-        for pokemon in dataLoadingService.pokemon {
-            if groupSelection.contains(pokemon.speciesId) {
-                pokemonSelection.append(pokemon)
-            }
-        }
+    func retrieveTeamWithId(_ id: Int) {
         setState(
             TeamBuilderState(
                 createdAt: Date(),
-                currentPokemonSelection: pokemonSelection,
+                currentPokemonSelection: testTeams.first { $0.id == id }?.pokemon ?? [],
                 groupNames: currentState.groupNames,
                 moves: currentState.moves
             )

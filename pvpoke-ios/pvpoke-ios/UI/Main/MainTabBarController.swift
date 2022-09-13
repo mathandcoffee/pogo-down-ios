@@ -23,7 +23,7 @@ final class MainTabBarController: UITabBarController {
         let articlesVC = ArticlesVC()
         articlesVC.tabBarItem = UITabBarItem(title: "Articles", image: .articlesIcon, tag: 0)
         
-        let teamBuilderVC = TeamBuilderVC()
+        let teamBuilderVC = TeamListVC()
         teamBuilderVC.tabBarItem = UITabBarItem(title: "Teams", image: .teamBuilderIcon, tag: 1)
         
         let infoVC = InfoVC()

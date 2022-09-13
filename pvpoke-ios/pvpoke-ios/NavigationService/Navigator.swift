@@ -10,6 +10,7 @@ import UIKit
 enum ViewBuilder {
     case splashScreen
     case main
+    case teamBuilder
 }
 
 extension UIViewController {
@@ -24,6 +25,11 @@ extension UIViewController {
         DispatchQueue.main.async {
             let viewController: UIViewController
             switch viewBuilder {
+            case .teamBuilder:
+                let teamBuilder = TeamBuilderVC()
+                teamBuilder.setTeam(id: identifier)
+                viewController = teamBuilder
+                viewController.modalPresentationStyle = .fullScreen
             default:
                 return
             }
@@ -59,6 +65,9 @@ extension UIViewController {
             case .main:
                 viewController = MainTabBarController()
                 viewController.modalTransitionStyle = .crossDissolve
+            case .teamBuilder:
+                viewController = TeamBuilderVC()
+                viewController.modalPresentationStyle = .fullScreen
             }
             
             if injectIntoRootNavigationController {

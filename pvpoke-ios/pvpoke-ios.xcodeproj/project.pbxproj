@@ -18,7 +18,6 @@
 		78FA917628CCE7880052805B /* Resolver-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 78FA917528CCE7880052805B /* Resolver-Dynamic */; };
 		78FA917A28CCE7D70052805B /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 78FA917928CCE7D70052805B /* SnapKit-Dynamic */; };
 		78FA91A028CCE9C20052805B /* UIColor+Dystoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA918C28CCE9C20052805B /* UIColor+Dystoria.swift */; };
-		78FA91A228CCE9C20052805B /* UIAlertController+Dystoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA918E28CCE9C20052805B /* UIAlertController+Dystoria.swift */; };
 		78FA91A328CCE9C20052805B /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78FA918F28CCE9C20052805B /* Roboto-Regular.ttf */; };
 		78FA91A428CCE9C20052805B /* CGFloat+Dystoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA919028CCE9C20052805B /* CGFloat+Dystoria.swift */; };
 		78FA91A628CCE9C20052805B /* UIView+Dystoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA919228CCE9C20052805B /* UIView+Dystoria.swift */; };
@@ -74,6 +73,15 @@
 		78FA968B28CDFEF80052805B /* UICollectionViewCell+Dystoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA968A28CDFEF80052805B /* UICollectionViewCell+Dystoria.swift */; };
 		78FA968E28CDFF430052805B /* PokemonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA968D28CDFF430052805B /* PokemonCollectionViewCell.swift */; };
 		78FA969028CE03990052805B /* String+Dystoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA968F28CE03990052805B /* String+Dystoria.swift */; };
+		78FA969A28CE37500052805B /* TeamListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA969928CE37500052805B /* TeamListVC.swift */; };
+		78FA969C28CE37590052805B /* TeamListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA969B28CE37590052805B /* TeamListViewModel.swift */; };
+		78FA969E28CE37600052805B /* TeamListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA969D28CE37600052805B /* TeamListState.swift */; };
+		78FA96A028CE37690052805B /* TeamListEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA969F28CE37690052805B /* TeamListEvent.swift */; };
+		78FA96A228CE38910052805B /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96A128CE38910052805B /* Team.swift */; };
+		78FA96A428CE39E50052805B /* PokemonTeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96A328CE39E50052805B /* PokemonTeamCollectionViewCell.swift */; };
+		78FA96A628CE3BAD0052805B /* PokemonTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96A528CE3BAD0052805B /* PokemonTeamView.swift */; };
+		78FA96A828CFF6470052805B /* EmptyTeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96A728CFF6470052805B /* EmptyTeamListView.swift */; };
+		78FA96AB28CFFEE80052805B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 78FA96AA28CFFEE80052805B /* Lottie */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,7 +115,6 @@
 		78FA916528CCE7360052805B /* pvpoke_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pvpoke_iosUITests.swift; sourceTree = "<group>"; };
 		78FA916728CCE7360052805B /* pvpoke_iosUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pvpoke_iosUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		78FA918C28CCE9C20052805B /* UIColor+Dystoria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Dystoria.swift"; sourceTree = "<group>"; };
-		78FA918E28CCE9C20052805B /* UIAlertController+Dystoria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Dystoria.swift"; sourceTree = "<group>"; };
 		78FA918F28CCE9C20052805B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		78FA919028CCE9C20052805B /* CGFloat+Dystoria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Dystoria.swift"; sourceTree = "<group>"; };
 		78FA919228CCE9C20052805B /* UIView+Dystoria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Dystoria.swift"; sourceTree = "<group>"; };
@@ -163,6 +170,14 @@
 		78FA968A28CDFEF80052805B /* UICollectionViewCell+Dystoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Dystoria.swift"; sourceTree = "<group>"; };
 		78FA968D28CDFF430052805B /* PokemonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionViewCell.swift; sourceTree = "<group>"; };
 		78FA968F28CE03990052805B /* String+Dystoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Dystoria.swift"; sourceTree = "<group>"; };
+		78FA969928CE37500052805B /* TeamListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListVC.swift; sourceTree = "<group>"; };
+		78FA969B28CE37590052805B /* TeamListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListViewModel.swift; sourceTree = "<group>"; };
+		78FA969D28CE37600052805B /* TeamListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListState.swift; sourceTree = "<group>"; };
+		78FA969F28CE37690052805B /* TeamListEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListEvent.swift; sourceTree = "<group>"; };
+		78FA96A128CE38910052805B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		78FA96A328CE39E50052805B /* PokemonTeamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTeamCollectionViewCell.swift; sourceTree = "<group>"; };
+		78FA96A528CE3BAD0052805B /* PokemonTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTeamView.swift; sourceTree = "<group>"; };
+		78FA96A728CFF6470052805B /* EmptyTeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTeamListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +187,7 @@
 			files = (
 				78FA917628CCE7880052805B /* Resolver-Dynamic in Frameworks */,
 				78FA917A28CCE7D70052805B /* SnapKit-Dynamic in Frameworks */,
+				78FA96AB28CFFEE80052805B /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +268,7 @@
 		78FA918A28CCE9AB0052805B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				78FA965F28CD2BCE0052805B /* TeamBuilder */,
 				78FA968C28CDFF340052805B /* CollectionView */,
 				78FA965C28CD241F0052805B /* Main */,
 				78FA91E228CCEDD60052805B /* HelperViewControllers */,
@@ -265,7 +282,6 @@
 			isa = PBXGroup;
 			children = (
 				78FA918C28CCE9C20052805B /* UIColor+Dystoria.swift */,
-				78FA918E28CCE9C20052805B /* UIAlertController+Dystoria.swift */,
 				78FA918F28CCE9C20052805B /* Roboto-Regular.ttf */,
 				78FA919028CCE9C20052805B /* CGFloat+Dystoria.swift */,
 				78FA919228CCE9C20052805B /* UIView+Dystoria.swift */,
@@ -380,8 +396,8 @@
 		78FA965C28CD241F0052805B /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				78FA969828CE37420052805B /* TeamList */,
 				78FA966A28CD68F20052805B /* Info */,
-				78FA965F28CD2BCE0052805B /* TeamBuilder */,
 				78FA91D428CCEBC00052805B /* Dashboard */,
 				78FA965D28CD24490052805B /* MainTabBarController.swift */,
 			);
@@ -431,8 +447,23 @@
 			isa = PBXGroup;
 			children = (
 				78FA968D28CDFF430052805B /* PokemonCollectionViewCell.swift */,
+				78FA96A328CE39E50052805B /* PokemonTeamCollectionViewCell.swift */,
+				78FA96A528CE3BAD0052805B /* PokemonTeamView.swift */,
 			);
 			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		78FA969828CE37420052805B /* TeamList */ = {
+			isa = PBXGroup;
+			children = (
+				78FA969928CE37500052805B /* TeamListVC.swift */,
+				78FA969B28CE37590052805B /* TeamListViewModel.swift */,
+				78FA969D28CE37600052805B /* TeamListState.swift */,
+				78FA969F28CE37690052805B /* TeamListEvent.swift */,
+				78FA96A128CE38910052805B /* Team.swift */,
+				78FA96A728CFF6470052805B /* EmptyTeamListView.swift */,
+			);
+			path = TeamList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,6 +485,7 @@
 			packageProductDependencies = (
 				78FA917528CCE7880052805B /* Resolver-Dynamic */,
 				78FA917928CCE7D70052805B /* SnapKit-Dynamic */,
+				78FA96AA28CFFEE80052805B /* Lottie */,
 			);
 			productName = "pvpoke-ios";
 			productReference = 78FA913E28CCE7340052805B /* pvpoke-ios.app */;
@@ -530,6 +562,7 @@
 			packageReferences = (
 				78FA917428CCE7880052805B /* XCRemoteSwiftPackageReference "Resolver" */,
 				78FA917828CCE7D70052805B /* XCRemoteSwiftPackageReference "SnapKit" */,
+				78FA96A928CFFEE80052805B /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 78FA913F28CCE7340052805B /* Products */;
 			projectDirPath = "";
@@ -584,9 +617,11 @@
 				78FA967028CD697C0052805B /* InfoState.swift in Sources */,
 				78FA91C028CCEB770052805B /* BaseViewModel.swift in Sources */,
 				78FA91DA28CCEBC00052805B /* ArticlesEvent.swift in Sources */,
+				78FA96A428CE39E50052805B /* PokemonTeamCollectionViewCell.swift in Sources */,
 				78FA964F28CCFD200052805B /* Pokemon.swift in Sources */,
 				78FA91B828CCEB210052805B /* Uninitializable.swift in Sources */,
 				78FA969028CE03990052805B /* String+Dystoria.swift in Sources */,
+				78FA96A228CE38910052805B /* Team.swift in Sources */,
 				78FA964B28CCFC710052805B /* Archetype.swift in Sources */,
 				78FA91C128CCEB770052805B /* State.swift in Sources */,
 				78FA966728CD2C180052805B /* TeamBuilderViewModel.swift in Sources */,
@@ -600,13 +635,15 @@
 				78FA91D128CCEBA10052805B /* SplashVC.swift in Sources */,
 				78FA966E28CD69730052805B /* InfoViewModel.swift in Sources */,
 				78FA91DF28CCED610052805B /* Navigator.swift in Sources */,
+				78FA969A28CE37500052805B /* TeamListVC.swift in Sources */,
 				78FA966328CD2BF40052805B /* TeamBuilderEvent.swift in Sources */,
 				78FA91BF28CCEB770052805B /* Event.swift in Sources */,
-				78FA91A228CCE9C20052805B /* UIAlertController+Dystoria.swift in Sources */,
 				78FA91DB28CCEBC00052805B /* ArticlesVC.swift in Sources */,
+				78FA96A828CFF6470052805B /* EmptyTeamListView.swift in Sources */,
 				78FA91A628CCE9C20052805B /* UIView+Dystoria.swift in Sources */,
 				78FA964728CCFBB60052805B /* Move.swift in Sources */,
 				78FA91E428CCEE150052805B /* RootNavigationController.swift in Sources */,
+				78FA96A028CE37690052805B /* TeamListEvent.swift in Sources */,
 				78FA965328CD004D0052805B /* DefaultIVs.swift in Sources */,
 				78FA91DC28CCEBC00052805B /* ArticlesViewModel.swift in Sources */,
 				78FA966C28CD69690052805B /* InfoVC.swift in Sources */,
@@ -621,6 +658,7 @@
 				78FA91D328CCEBA10052805B /* SplashViewModel.swift in Sources */,
 				78FA966528CD2C050052805B /* TeamBuilderState.swift in Sources */,
 				78FA965928CD10AC0052805B /* Base.swift in Sources */,
+				78FA969C28CE37590052805B /* TeamListViewModel.swift in Sources */,
 				78FA91D228CCEBA10052805B /* SplashState.swift in Sources */,
 				78FA967528CD6D4B0052805B /* TeamBuilderAnalytics.swift in Sources */,
 				78FA965128CCFD700052805B /* Stats.swift in Sources */,
@@ -632,7 +670,9 @@
 				78FA967228CD69860052805B /* InfoEvent.swift in Sources */,
 				78FA91AC28CCE9C20052805B /* CGSize+Dystoria.swift in Sources */,
 				78FA91B328CCE9C20052805B /* UIImage+Dystoria.swift in Sources */,
+				78FA969E28CE37600052805B /* TeamListState.swift in Sources */,
 				78FA968B28CDFEF80052805B /* UICollectionViewCell+Dystoria.swift in Sources */,
+				78FA96A628CE3BAD0052805B /* PokemonTeamView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -982,6 +1022,14 @@
 				kind = branch;
 			};
 		};
+		78FA96A928CFFEE80052805B /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -994,6 +1042,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 78FA917828CCE7D70052805B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
+		};
+		78FA96AA28CFFEE80052805B /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 78FA96A928CFFEE80052805B /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 

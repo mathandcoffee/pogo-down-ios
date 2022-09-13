@@ -36,4 +36,8 @@ extension UIImage {
     static var settingsIcon: UIImage {
         return imageWithName("settings-settings_symbol")
     }
+    
+    static var logo: UIImage {
+        return imageWithName("logo")
+    }
 }

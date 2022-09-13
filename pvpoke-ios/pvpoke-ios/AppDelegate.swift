@@ -28,9 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UINavigationBar.appearance().standardAppearance = standard
         
-        UITabBar.appearance().barTintColor = .lightBackground
+        UITabBar.appearance().barTintColor = .onBackground
         UITabBar.appearance().backgroundColor = .surface
-        UITabBar.appearance().tintColor = .onBackground
+        UITabBar.appearance().tintColor = .lightPrimary
         
         return true
     }

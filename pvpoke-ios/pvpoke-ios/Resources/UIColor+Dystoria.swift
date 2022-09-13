@@ -9,7 +9,7 @@ import SwiftUI
 
 extension UIColor {
     
-    static let lightPrimary: UIColor = UIColor(red: 0xAD, green: 0x47, blue: 0xFF)
+    static let lightPrimary: UIColor = UIColor(red: 0xBD, green: 0x57, blue: 0xFF)
     
     static let darkPrimary: UIColor = UIColor(red: 0x3F, green: 0x00, blue: 0x99)
     
