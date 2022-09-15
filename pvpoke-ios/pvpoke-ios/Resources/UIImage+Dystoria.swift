@@ -40,4 +40,8 @@ extension UIImage {
     static var logo: UIImage {
         return imageWithName("logo")
     }
+    
+    static var edit: UIImage {
+        return imageWithName("edit")
+    }
 }

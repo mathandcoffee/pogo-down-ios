@@ -41,3 +41,7 @@ extension StateViewController {
             })
     }
 }
+
+protocol ActionSheetViewController: UIViewController {
+    func actionSheetDismissal()
+}

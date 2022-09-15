@@ -12,7 +12,7 @@ import SwiftUI
 import WebKit
 import SnapKit
 
-class WebViewVC: UIViewController, WKUIDelegate {
+final class WebViewVC: UIViewController, WKUIDelegate {
     
     let displayUrl: String
     let headerText: String

@@ -20,6 +20,12 @@ final class TeamListVC: BaseViewController {
     
     var viewModel = TeamListViewModel()
     
+    private lazy var toolbar: Toolbar = {
+        return Toolbar(
+            configuration: ToolbarConfiguration(
+                showBackButton: false, backTitle: nil, title: nil, showSearch: true, dismissAction: nil))
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
@@ -72,9 +78,16 @@ final class TeamListVC: BaseViewController {
             make.centerY.equalToSuperview().offset(-40)
         }
         
+        view.addSubview(toolbar)
+        toolbar.snp.makeConstraints { make in
+            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top).offset(56)
+        }
+        
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(toolbar.snp.bottom)
         }
         
         view.addSubview(addTeamButton)

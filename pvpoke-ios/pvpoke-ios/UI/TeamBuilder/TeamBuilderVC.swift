@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import Resolver
 
 final class TeamBuilderVC: BaseViewController {
     
@@ -17,7 +18,7 @@ final class TeamBuilderVC: BaseViewController {
     var stateSubscription: AnyCancellable?
     var eventSubscription: AnyCancellable?
     
-    let viewModel = TeamBuilderViewModel()
+    @Injected var viewModel: TeamBuilderViewModel
     
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -33,9 +34,25 @@ final class TeamBuilderVC: BaseViewController {
         return collectionView
     }()
     
+    private lazy var toolbar: Toolbar = {
+        let configuration = ToolbarConfiguration(
+            showBackButton: true,
+            backTitle: "Teams",
+            title: nil,
+            showSearch: false,
+            dismissAction: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+        })
+        return Toolbar(configuration: configuration)
+    }()
+    
     init() {
         super.init(nibName: nil, bundle: nil)
-        setupView()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
         setupViewModelObservers()
     }
     
@@ -55,17 +72,30 @@ final class TeamBuilderVC: BaseViewController {
         
     }
     
-    private func setupView() {
+    private func setupUI() {
         view.backgroundColor = .background
+        navigationItem.backButtonTitle = "Teams"
+        
+        view.addSubview(toolbar)
+        toolbar.snp.makeConstraints { make in
+            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top).offset(56)
+        }
         
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.height.width.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.leading.trailing.width.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(toolbar.snp.bottom)
         }
     }
     
     func setTeam(id: Int) {
         viewModel.retrieveTeamWithId(id)
+    }
+    
+    private func chooseNewPokemon(pokemonIndex: Int) {
+        viewModel.selectPokemonToChange(index: pokemonIndex)
+        navigateTo(.pokemonList)
     }
 }
 
@@ -87,7 +117,15 @@ extension TeamBuilderVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
         }.map {
             $0.name
         }
-        cell.configure(tintColor: .getColorForPokemonType(pokemonType: pokemon.types[0]), name: pokemon.speciesName, fastMove: fastMove, strongMoves: chargedMoves)
+        cell.configure(
+            tintColor: .getColorForPokemonType(pokemonType: pokemon.types[0]),
+            name: pokemon.speciesName,
+            fastMove: fastMove,
+            strongMoves: chargedMoves,
+            showEdit: true
+        ) { [unowned self] in
+            self.chooseNewPokemon(pokemonIndex: indexPath.row)
+        }
         return cell
     }
     

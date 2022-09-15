@@ -12,4 +12,7 @@ struct TeamBuilderState: State {
     let currentPokemonSelection: [Pokemon]
     let groupNames: [String]
     let moves: [Move]
+    let modifyingIndex: Int
+    let team: Team?
+    let availablePokemon: [Pokemon]
 }

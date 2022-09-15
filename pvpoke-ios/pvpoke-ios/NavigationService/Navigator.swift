@@ -11,6 +11,7 @@ enum ViewBuilder {
     case splashScreen
     case main
     case teamBuilder
+    case pokemonList
 }
 
 extension UIViewController {
@@ -68,6 +69,9 @@ extension UIViewController {
             case .teamBuilder:
                 viewController = TeamBuilderVC()
                 viewController.modalPresentationStyle = .fullScreen
+            case .pokemonList:
+                self.present(PokemonListVC(), animated: true)
+                return
             }
             
             if injectIntoRootNavigationController {

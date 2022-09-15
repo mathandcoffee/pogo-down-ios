@@ -82,6 +82,10 @@
 		78FA96A628CE3BAD0052805B /* PokemonTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96A528CE3BAD0052805B /* PokemonTeamView.swift */; };
 		78FA96A828CFF6470052805B /* EmptyTeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96A728CFF6470052805B /* EmptyTeamListView.swift */; };
 		78FA96AB28CFFEE80052805B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 78FA96AA28CFFEE80052805B /* Lottie */; };
+		78FA96B428D0F73C0052805B /* PokemonListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96B328D0F73C0052805B /* PokemonListVC.swift */; };
+		78FA96B728D1FEDC0052805B /* XLActionController in Frameworks */ = {isa = PBXBuildFile; productRef = 78FA96B628D1FEDC0052805B /* XLActionController */; };
+		78FA96D928D26A010052805B /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96D828D26A010052805B /* Toolbar.swift */; };
+		78FA96DB28D2BAFF0052805B /* PokemonDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96DA28D2BAFF0052805B /* PokemonDetailsCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +182,9 @@
 		78FA96A328CE39E50052805B /* PokemonTeamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTeamCollectionViewCell.swift; sourceTree = "<group>"; };
 		78FA96A528CE3BAD0052805B /* PokemonTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTeamView.swift; sourceTree = "<group>"; };
 		78FA96A728CFF6470052805B /* EmptyTeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTeamListView.swift; sourceTree = "<group>"; };
+		78FA96B328D0F73C0052805B /* PokemonListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListVC.swift; sourceTree = "<group>"; };
+		78FA96D828D26A010052805B /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
+		78FA96DA28D2BAFF0052805B /* PokemonDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78FA96B728D1FEDC0052805B /* XLActionController in Frameworks */,
 				78FA917628CCE7880052805B /* Resolver-Dynamic in Frameworks */,
 				78FA917A28CCE7D70052805B /* SnapKit-Dynamic in Frameworks */,
 				78FA96AB28CFFEE80052805B /* Lottie in Frameworks */,
@@ -268,6 +276,7 @@
 		78FA918A28CCE9AB0052805B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				78FA96B228D0F7280052805B /* PokemonList */,
 				78FA965F28CD2BCE0052805B /* TeamBuilder */,
 				78FA968C28CDFF340052805B /* CollectionView */,
 				78FA965C28CD241F0052805B /* Main */,
@@ -315,6 +324,7 @@
 				78FA91BB28CCEB770052805B /* Event.swift */,
 				78FA91BC28CCEB770052805B /* BaseViewModel.swift */,
 				78FA91BD28CCEB770052805B /* State.swift */,
+				78FA96D828D26A010052805B /* Toolbar.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -449,6 +459,7 @@
 				78FA968D28CDFF430052805B /* PokemonCollectionViewCell.swift */,
 				78FA96A328CE39E50052805B /* PokemonTeamCollectionViewCell.swift */,
 				78FA96A528CE3BAD0052805B /* PokemonTeamView.swift */,
+				78FA96DA28D2BAFF0052805B /* PokemonDetailsCollectionViewCell.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -464,6 +475,14 @@
 				78FA96A728CFF6470052805B /* EmptyTeamListView.swift */,
 			);
 			path = TeamList;
+			sourceTree = "<group>";
+		};
+		78FA96B228D0F7280052805B /* PokemonList */ = {
+			isa = PBXGroup;
+			children = (
+				78FA96B328D0F73C0052805B /* PokemonListVC.swift */,
+			);
+			path = PokemonList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -486,6 +505,7 @@
 				78FA917528CCE7880052805B /* Resolver-Dynamic */,
 				78FA917928CCE7D70052805B /* SnapKit-Dynamic */,
 				78FA96AA28CFFEE80052805B /* Lottie */,
+				78FA96B628D1FEDC0052805B /* XLActionController */,
 			);
 			productName = "pvpoke-ios";
 			productReference = 78FA913E28CCE7340052805B /* pvpoke-ios.app */;
@@ -563,6 +583,7 @@
 				78FA917428CCE7880052805B /* XCRemoteSwiftPackageReference "Resolver" */,
 				78FA917828CCE7D70052805B /* XCRemoteSwiftPackageReference "SnapKit" */,
 				78FA96A928CFFEE80052805B /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				78FA96B528D1FEDC0052805B /* XCRemoteSwiftPackageReference "XLActionController" */,
 			);
 			productRefGroup = 78FA913F28CCE7340052805B /* Products */;
 			projectDirPath = "";
@@ -620,6 +641,7 @@
 				78FA96A428CE39E50052805B /* PokemonTeamCollectionViewCell.swift in Sources */,
 				78FA964F28CCFD200052805B /* Pokemon.swift in Sources */,
 				78FA91B828CCEB210052805B /* Uninitializable.swift in Sources */,
+				78FA96B428D0F73C0052805B /* PokemonListVC.swift in Sources */,
 				78FA969028CE03990052805B /* String+Dystoria.swift in Sources */,
 				78FA96A228CE38910052805B /* Team.swift in Sources */,
 				78FA964B28CCFC710052805B /* Archetype.swift in Sources */,
@@ -636,6 +658,7 @@
 				78FA966E28CD69730052805B /* InfoViewModel.swift in Sources */,
 				78FA91DF28CCED610052805B /* Navigator.swift in Sources */,
 				78FA969A28CE37500052805B /* TeamListVC.swift in Sources */,
+				78FA96D928D26A010052805B /* Toolbar.swift in Sources */,
 				78FA966328CD2BF40052805B /* TeamBuilderEvent.swift in Sources */,
 				78FA91BF28CCEB770052805B /* Event.swift in Sources */,
 				78FA91DB28CCEBC00052805B /* ArticlesVC.swift in Sources */,
@@ -653,6 +676,7 @@
 				78FA91AF28CCE9C20052805B /* UIFont+Dystoria.swift in Sources */,
 				78FA91B728CCEB210052805B /* ResolvedModule.swift in Sources */,
 				78FA914428CCE7340052805B /* SceneDelegate.swift in Sources */,
+				78FA96DB28D2BAFF0052805B /* PokemonDetailsCollectionViewCell.swift in Sources */,
 				78FA91D028CCEBA10052805B /* SplashEvent.swift in Sources */,
 				78FA91A928CCE9C20052805B /* UILabel+Dystoria.swift in Sources */,
 				78FA91D328CCEBA10052805B /* SplashViewModel.swift in Sources */,
@@ -1030,6 +1054,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		78FA96B528D1FEDC0052805B /* XCRemoteSwiftPackageReference "XLActionController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/xmartlabs/XLActionController";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1047,6 +1079,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 78FA96A928CFFEE80052805B /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		78FA96B628D1FEDC0052805B /* XLActionController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 78FA96B528D1FEDC0052805B /* XCRemoteSwiftPackageReference "XLActionController" */;
+			productName = XLActionController;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -25,7 +25,10 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
                 createdAt: Date(),
                 currentPokemonSelection: [],
                 groupNames: [],
-                moves: []
+                moves: [],
+                modifyingIndex: -1,
+                team: nil,
+                availablePokemon: []
             )
         )
         getData()
@@ -37,7 +40,10 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
                 createdAt: Date(),
                 currentPokemonSelection: currentState.currentPokemonSelection,
                 groupNames: dataLoadingService.groups.map { $0.name },
-                moves: dataLoadingService.moves
+                moves: dataLoadingService.moves,
+                modifyingIndex: -1,
+                team: currentState.team,
+                availablePokemon: dataLoadingService.pokemon
             )
         )
     }
@@ -48,8 +54,31 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
                 createdAt: Date(),
                 currentPokemonSelection: testTeams.first { $0.id == id }?.pokemon ?? [],
                 groupNames: currentState.groupNames,
-                moves: currentState.moves
+                moves: currentState.moves,
+                modifyingIndex: -1,
+                team: testTeams.first { $0.id == id },
+                availablePokemon: currentState.availablePokemon
             )
         )
+    }
+    
+    func selectPokemonToChange(index: Int) {
+        setState(
+            TeamBuilderState(
+                createdAt: Date(),
+                currentPokemonSelection: currentState.currentPokemonSelection,
+                groupNames: currentState.groupNames,
+                moves: currentState.moves,
+                modifyingIndex: index,
+                team: currentState.team,
+                availablePokemon: currentState.availablePokemon
+            )
+        )
+    }
+}
+
+final class TeamBuilderViewModelModule: ResolvedModule {
+    static func register() {
+        Resolver.register { TeamBuilderViewModel() }.scope(.shared)
     }
 }
