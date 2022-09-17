@@ -10,7 +10,12 @@
         <attribute name="strongMoveOne" optional="YES" attributeType="String"/>
         <attribute name="strongMoveTwo" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="TeamEntity" representedClassName="TeamEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="pokemon" attributeType="Transformable" valueTransformerName="" customClassName=".Array&lt;PokemonEntity&gt;"/>
+    </entity>
     <elements>
         <element name="PokemonEntity" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="TeamEntity" positionX="-45" positionY="54" width="128" height="59"/>
     </elements>
 </model>

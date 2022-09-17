@@ -79,7 +79,7 @@ final class PokemonCollectionViewCell: UICollectionViewCell {
         fastMove: String,
         strongMoves: [String],
         showEdit: Bool = false,
-        editAction: @escaping (() -> Void)
+        editAction: (() -> Void)?
     ) {
         self.editAction = editAction
         backgroundColor = tintColor.withAlphaComponent(0.7)

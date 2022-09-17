@@ -8,8 +8,9 @@
 import Foundation
 
 struct Team: JSONCodable {
-    let id: Int
+    let id: UUID
     let name: String
-    let pokemon: [Pokemon]
+    var pokemon: [Pokemon]
     let cup: Cup?
+    let group: Group?
 }

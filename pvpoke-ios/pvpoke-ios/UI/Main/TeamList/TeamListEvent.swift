@@ -8,6 +8,6 @@
 import Foundation
 
 enum TeamListEvent: Event {
-    case showTeam(teamId: Int)
+    case showTeam(teamId: UUID)
     case createTeam
 }

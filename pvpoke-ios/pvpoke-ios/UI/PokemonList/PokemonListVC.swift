@@ -7,6 +7,7 @@
 
 import UIKit
 import Resolver
+import SnapKit
 
 final class PokemonListVC: UIViewController, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
     
@@ -45,6 +46,128 @@ final class PokemonListVC: UIViewController, UIViewControllerTransitioningDelega
         return toolbar
     }()
     
+    private lazy var selectedPokemonNameView: UILabel = {
+        let label = UILabel()
+        label.textColor = .onBackground
+        label.font = .headline2
+        label.textAlignment = .center
+        label.numberOfLines = 1
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    private lazy var movePicker: UIPickerView = {
+        let picker = UIPickerView()
+        picker.backgroundColor = .background.withAlphaComponent(0.9)
+        picker.delegate = self
+        return picker
+    }()
+    
+    private var movePickerDataSource: PokemonMovePickerDataSource? {
+        didSet {
+            movePicker.dataSource = movePickerDataSource
+        }
+    }
+    
+    private lazy var fastMoveSelectionLabel: UITextView = {
+        let label = UITextView()
+        label.isUserInteractionEnabled = true
+        label.isEditable = false
+        label.textColor = .onBackground
+        label.font = .body2
+        label.layer.cornerRadius = 4
+        label.textContainerInset = UIEdgeInsets(top: 4, left: 4, bottom: 2, right: 4)
+        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectFastMove)))
+        return label
+    }()
+    
+    private lazy var firstStrongMoveSelectionLabel: UITextView = {
+        let label = UITextView()
+        label.isUserInteractionEnabled = true
+        label.isEditable = false
+        label.textColor = .onBackground
+        label.font = .body2
+        label.layer.cornerRadius = 4
+        label.textContainerInset = UIEdgeInsets(top: 4, left: 4, bottom: 2, right: 4)
+        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectFirstStrongMove)))
+        return label
+    }()
+    
+    private lazy var secondStrongMoveSelectionLabel: UITextView = {
+        let label = UITextView()
+        label.isUserInteractionEnabled = true
+        label.isEditable = false
+        label.textColor = .onBackground
+        label.font = .body2
+        label.layer.cornerRadius = 4
+        label.textContainerInset = UIEdgeInsets(top: 4, left: 4, bottom: 2, right: 4)
+        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectSecondStrongMove)))
+        return label
+    }()
+    
+    private let containerDismissOverlay = UIView()
+    
+    private lazy var moveSelectionContainer: UIView = {
+        let view = UIView()
+        view.isUserInteractionEnabled = true
+        view.addSubview(selectedPokemonNameView)
+        selectedPokemonNameView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(36)
+        }
+        
+        let fastMoveLabel = UILabel(text: "Fast Move", textColor: .onBackground, font: .headline4)
+        let strongMoveLabel = UILabel(text: "Strong Moves", textColor: .onBackground, font: .headline4)
+        
+        view.addSubview(fastMoveLabel)
+        fastMoveLabel.snp.makeConstraints { make in
+            make.top.equalTo(selectedPokemonNameView.snp.bottom).offset(12)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.width.equalToSuperview().inset(16)
+            make.height.equalTo(24)
+        }
+        
+        view.addSubview(fastMoveSelectionLabel)
+        fastMoveSelectionLabel.snp.makeConstraints { make in
+            make.top.equalTo(fastMoveLabel.snp.bottom).offset(8)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.width.equalToSuperview().inset(16)
+            make.height.equalTo(24)
+        }
+        
+        view.addSubview(strongMoveLabel)
+        strongMoveLabel.snp.makeConstraints { make in
+            make.top.equalTo(fastMoveSelectionLabel.snp.bottom).offset(12)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.width.equalToSuperview().inset(16)
+            make.height.equalTo(24)
+        }
+        
+        view.addSubview(firstStrongMoveSelectionLabel)
+        firstStrongMoveSelectionLabel.snp.makeConstraints { make in
+            make.top.equalTo(strongMoveLabel.snp.bottom).offset(8)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.width.equalToSuperview().inset(16)
+            make.height.equalTo(24)
+        }
+        
+        view.addSubview(secondStrongMoveSelectionLabel)
+        secondStrongMoveSelectionLabel.snp.makeConstraints { make in
+            make.top.equalTo(firstStrongMoveSelectionLabel.snp.bottom).offset(8)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.width.equalToSuperview().inset(16)
+            make.height.equalTo(24)
+        }
+        
+        view.isHidden = true
+        view.layer.cornerRadius = 8
+        view.layer.borderWidth = 2
+        view.layer.borderColor = UIColor.background.cgColor
+        view.backgroundColor = .background.withAlphaComponent(0.7)
+        
+        return view
+    }()
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         setupUI()
@@ -79,6 +202,48 @@ final class PokemonListVC: UIViewController, UIViewControllerTransitioningDelega
             make.bottom.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             make.top.equalTo(toolbar.snp.bottom)
         }
+        
+        view.addSubview(containerDismissOverlay)
+        containerDismissOverlay.isHidden = true
+        containerDismissOverlay.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideContainer)))
+        containerDismissOverlay.backgroundColor = .surface.withAlphaComponent(0.5)
+        containerDismissOverlay.snp.makeConstraints { make in
+            make.top.bottom.leading.trailing.height.width.equalToSuperview()
+        }
+        
+        view.addSubview(moveSelectionContainer)
+        moveSelectionContainer.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(48)
+            make.centerY.equalTo(view.safeAreaLayoutGuide)
+            make.width.equalToSuperview().inset(48)
+            make.height.equalTo(220)
+        }
+        
+        view.addSubview(movePicker)
+        movePicker.isHidden = true
+        movePicker.snp.makeConstraints { make in
+            make.top.bottom.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    
+    @objc private func hideContainer() {
+        moveSelectionContainer.isHidden = true
+        containerDismissOverlay.isHidden = true
+    }
+    
+    @objc private func selectFastMove() {
+        movePickerDataSource = PokemonMovePickerDataSource(moves: viewModel.currentState.moves.filter { move in viewModel.currentState.currentlySelectedPokemon?.fastMoves.contains(move.moveId) ?? false }, moveType: .fast)
+        movePicker.isHidden = false
+    }
+    
+    @objc private func selectFirstStrongMove() {
+        movePickerDataSource = PokemonMovePickerDataSource(moves: viewModel.currentState.moves.filter { move in viewModel.currentState.currentlySelectedPokemon?.chargedMoves.contains(move.moveId) ?? false }, moveType: .firstCharge)
+        movePicker.isHidden = false
+    }
+    
+    @objc private func selectSecondStrongMove() {
+        movePickerDataSource = PokemonMovePickerDataSource(moves: viewModel.currentState.moves.filter { move in viewModel.currentState.currentlySelectedPokemon?.chargedMoves.contains(move.moveId) ?? false }, moveType: .secondCharge)
+        movePicker.isHidden = false
     }
     
     @objc private func swipeGestureDidRecognize(_ gesture: UISwipeGestureRecognizer) {
@@ -188,10 +353,9 @@ extension PokemonListVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
             tintColor: .getColorForPokemonType(pokemonType: pokemon.types[0]),
             name: pokemon.speciesName,
             fastMove: fastMove,
-            strongMoves: chargedMoves
-        ) { [unowned self] in
-            //TODO: Change pokemon here
-        }
+            strongMoves: chargedMoves,
+            editAction: nil
+        )
         return cell
     }
     
@@ -201,7 +365,6 @@ extension PokemonListVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         let pokemon = viewModel.currentState.availablePokemon[indexPath.row]
-
         let height = PokemonCollectionViewCell.height(name: pokemon.speciesName, fastMove: pokemon.fastMoves[0], chargedMoves: pokemon.chargedMoves, collectionView: collectionView)
         
         return CGSize(width: collectionView.frame.width - 32, height: height)
@@ -217,5 +380,56 @@ extension PokemonListVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
         insetForSectionAt section: Int
     ) -> UIEdgeInsets {
            return UIEdgeInsets(top: 12, left: 16, bottom: 12, right: 16)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let currentSelectedPokemon = viewModel.currentState.availablePokemon[indexPath.row]
+        selectedPokemonNameView.text = currentSelectedPokemon.speciesName
+        viewModel.selectPokemon(pokemon: currentSelectedPokemon)
+        guard let fastMove = viewModel.currentState.moves.first(where: { $0.moveId == currentSelectedPokemon.fastMoves[0] }) else { return }
+        fastMoveSelectionLabel.text = fastMove.name
+        fastMoveSelectionLabel.backgroundColor = .getColorForPokemonType(pokemonType: fastMove.type)
+        guard let firstStrongMove = viewModel.currentState.moves.first(where: { $0.moveId == currentSelectedPokemon.chargedMoves[0] }) else { return }
+        firstStrongMoveSelectionLabel.text = firstStrongMove.name
+        firstStrongMoveSelectionLabel.backgroundColor = .getColorForPokemonType(pokemonType: firstStrongMove.type)
+        guard let secondStrongMove = viewModel.currentState.moves.first(where: { $0.moveId == currentSelectedPokemon.chargedMoves[1] }) else { return }
+        secondStrongMoveSelectionLabel.text = secondStrongMove.name
+        secondStrongMoveSelectionLabel.backgroundColor = .getColorForPokemonType(pokemonType: secondStrongMove.type)
+        moveSelectionContainer.isHidden = false
+        containerDismissOverlay.isHidden = false
+    }
+}
+
+extension PokemonListVC: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        guard
+            let dataSource = pickerView.dataSource as? PokemonMovePickerDataSource,
+            var currentSelectedPokemon = viewModel.currentState.currentlySelectedPokemon else { return }
+        
+        switch (dataSource.type) {
+        case .fast:
+            currentSelectedPokemon.selectedFastMove = row
+            guard let move = viewModel.currentState.moves.first(where: { $0.moveId == currentSelectedPokemon.fastMoves[row] }) else { return }
+            fastMoveSelectionLabel.text = move.name
+            fastMoveSelectionLabel.backgroundColor = .getColorForPokemonType(pokemonType: move.type)
+        case .firstCharge:
+            currentSelectedPokemon.selectedChargeMove?[0] = row
+            guard let move = viewModel.currentState.moves.first(where: { $0.moveId == currentSelectedPokemon.chargedMoves[row] }) else { return }
+            firstStrongMoveSelectionLabel.text = move.name
+            firstStrongMoveSelectionLabel.backgroundColor = .getColorForPokemonType(pokemonType: move.type)
+        case.secondCharge:
+            currentSelectedPokemon.selectedChargeMove?[1] = row
+            guard let move = viewModel.currentState.moves.first(where: { $0.moveId == currentSelectedPokemon.chargedMoves[row] }) else { return }
+            secondStrongMoveSelectionLabel.text = move.name
+            secondStrongMoveSelectionLabel.backgroundColor = .getColorForPokemonType(pokemonType: move.type)
+        }
+        viewModel.changePokemonAtChangePosition(pokemon: currentSelectedPokemon)
+        movePicker.isHidden = true
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let dataSource = pickerView.dataSource as? PokemonMovePickerDataSource
+        pickerView.subviews[1].backgroundColor = .onBackground.withAlphaComponent(0.3)
+        return NSAttributedString(string: dataSource?.moves[row].name ?? "", attributes: [NSAttributedString.Key.foregroundColor: UIColor.onBackground])
     }
 }

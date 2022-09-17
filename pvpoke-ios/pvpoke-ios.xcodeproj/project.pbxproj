@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		784FD4F128D606D000658C60 /* PokemonMovePickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784FD4F028D606D000658C60 /* PokemonMovePickerDataSource.swift */; };
 		78FA914228CCE7340052805B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA914128CCE7340052805B /* AppDelegate.swift */; };
 		78FA914428CCE7340052805B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA914328CCE7340052805B /* SceneDelegate.swift */; };
 		78FA914C28CCE7340052805B /* pvpoke_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78FA914A28CCE7340052805B /* pvpoke_ios.xcdatamodeld */; };
@@ -85,7 +86,7 @@
 		78FA96B428D0F73C0052805B /* PokemonListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96B328D0F73C0052805B /* PokemonListVC.swift */; };
 		78FA96B728D1FEDC0052805B /* XLActionController in Frameworks */ = {isa = PBXBuildFile; productRef = 78FA96B628D1FEDC0052805B /* XLActionController */; };
 		78FA96D928D26A010052805B /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96D828D26A010052805B /* Toolbar.swift */; };
-		78FA96DB28D2BAFF0052805B /* PokemonDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96DA28D2BAFF0052805B /* PokemonDetailsCollectionViewCell.swift */; };
+		78FA96DF28D3ED510052805B /* DystoriaTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96DE28D3ED510052805B /* DystoriaTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		784FD4F028D606D000658C60 /* PokemonMovePickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonMovePickerDataSource.swift; sourceTree = "<group>"; };
 		78FA913E28CCE7340052805B /* pvpoke-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pvpoke-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78FA914128CCE7340052805B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78FA914328CCE7340052805B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,7 +186,7 @@
 		78FA96A728CFF6470052805B /* EmptyTeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTeamListView.swift; sourceTree = "<group>"; };
 		78FA96B328D0F73C0052805B /* PokemonListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListVC.swift; sourceTree = "<group>"; };
 		78FA96D828D26A010052805B /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
-		78FA96DA28D2BAFF0052805B /* PokemonDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
+		78FA96DE28D3ED510052805B /* DystoriaTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DystoriaTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,7 +253,6 @@
 				78FA914D28CCE7360052805B /* Assets.xcassets */,
 				78FA914F28CCE7360052805B /* LaunchScreen.storyboard */,
 				78FA915228CCE7360052805B /* Info.plist */,
-				78FA914A28CCE7340052805B /* pvpoke_ios.xcdatamodeld */,
 			);
 			path = "pvpoke-ios";
 			sourceTree = "<group>";
@@ -280,7 +281,7 @@
 				78FA965F28CD2BCE0052805B /* TeamBuilder */,
 				78FA968C28CDFF340052805B /* CollectionView */,
 				78FA965C28CD241F0052805B /* Main */,
-				78FA91E228CCEDD60052805B /* HelperViewControllers */,
+				78FA91E228CCEDD60052805B /* HelperViews */,
 				78FA91CB28CCEBA10052805B /* Splash */,
 				78FA91B928CCEB770052805B /* Base */,
 			);
@@ -359,13 +360,14 @@
 			path = NavigationService;
 			sourceTree = "<group>";
 		};
-		78FA91E228CCEDD60052805B /* HelperViewControllers */ = {
+		78FA91E228CCEDD60052805B /* HelperViews */ = {
 			isa = PBXGroup;
 			children = (
+				78FA96DE28D3ED510052805B /* DystoriaTextView.swift */,
 				78FA91E328CCEE150052805B /* RootNavigationController.swift */,
 				78FA91E028CCEDD10052805B /* WebViewVC.swift */,
 			);
-			path = HelperViewControllers;
+			path = HelperViews;
 			sourceTree = "<group>";
 		};
 		78FA91E728CCF3580052805B /* DataLoadingService */ = {
@@ -379,6 +381,7 @@
 		78FA91EA28CCF77C0052805B /* RawData */ = {
 			isa = PBXGroup;
 			children = (
+				78FA914A28CCE7340052805B /* pvpoke_ios.xcdatamodeld */,
 				78FA965628CD06780052805B /* gamemaster */,
 				78FA964528CCFB9E0052805B /* JSONRepresentations */,
 			);
@@ -459,7 +462,6 @@
 				78FA968D28CDFF430052805B /* PokemonCollectionViewCell.swift */,
 				78FA96A328CE39E50052805B /* PokemonTeamCollectionViewCell.swift */,
 				78FA96A528CE3BAD0052805B /* PokemonTeamView.swift */,
-				78FA96DA28D2BAFF0052805B /* PokemonDetailsCollectionViewCell.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -481,6 +483,7 @@
 			isa = PBXGroup;
 			children = (
 				78FA96B328D0F73C0052805B /* PokemonListVC.swift */,
+				784FD4F028D606D000658C60 /* PokemonMovePickerDataSource.swift */,
 			);
 			path = PokemonList;
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 				78FA91D128CCEBA10052805B /* SplashVC.swift in Sources */,
 				78FA966E28CD69730052805B /* InfoViewModel.swift in Sources */,
 				78FA91DF28CCED610052805B /* Navigator.swift in Sources */,
+				78FA96DF28D3ED510052805B /* DystoriaTextView.swift in Sources */,
 				78FA969A28CE37500052805B /* TeamListVC.swift in Sources */,
 				78FA96D928D26A010052805B /* Toolbar.swift in Sources */,
 				78FA966328CD2BF40052805B /* TeamBuilderEvent.swift in Sources */,
@@ -664,6 +668,7 @@
 				78FA91DB28CCEBC00052805B /* ArticlesVC.swift in Sources */,
 				78FA96A828CFF6470052805B /* EmptyTeamListView.swift in Sources */,
 				78FA91A628CCE9C20052805B /* UIView+Dystoria.swift in Sources */,
+				784FD4F128D606D000658C60 /* PokemonMovePickerDataSource.swift in Sources */,
 				78FA964728CCFBB60052805B /* Move.swift in Sources */,
 				78FA91E428CCEE150052805B /* RootNavigationController.swift in Sources */,
 				78FA96A028CE37690052805B /* TeamListEvent.swift in Sources */,
@@ -676,7 +681,6 @@
 				78FA91AF28CCE9C20052805B /* UIFont+Dystoria.swift in Sources */,
 				78FA91B728CCEB210052805B /* ResolvedModule.swift in Sources */,
 				78FA914428CCE7340052805B /* SceneDelegate.swift in Sources */,
-				78FA96DB28D2BAFF0052805B /* PokemonDetailsCollectionViewCell.swift in Sources */,
 				78FA91D028CCEBA10052805B /* SplashEvent.swift in Sources */,
 				78FA91A928CCE9C20052805B /* UILabel+Dystoria.swift in Sources */,
 				78FA91D328CCEBA10052805B /* SplashViewModel.swift in Sources */,

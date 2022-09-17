@@ -50,4 +50,6 @@ struct Pokemon: JSONCodable {
     let thirdMoveCost: Int?
     let released: Bool?
     let family: Family?
+    var selectedFastMove: Int? = 0
+    var selectedChargeMove: [Int]? = [0, 1]
 }

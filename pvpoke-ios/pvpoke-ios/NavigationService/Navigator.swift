@@ -19,7 +19,7 @@ extension UIViewController {
     //TODO: This will be used to display certain pokemon with IDs
     func navigateToIdentifiable(
         _ viewBuilder: ViewBuilder,
-        identifier: Int,
+        identifier: UUID,
         secondaryIdentifier: Int? = nil,
         containerNavigationController: UINavigationController? = nil
     ) {

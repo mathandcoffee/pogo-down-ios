@@ -46,6 +46,17 @@ final class TeamBuilderVC: BaseViewController {
         return Toolbar(configuration: configuration)
     }()
     
+    private lazy var actionButton: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(handleButtonPress), for: .touchUpInside)
+        button.backgroundColor = .primary
+        button.layer.cornerRadius = 24
+        button.setTitle("Add Pokemon", for: .normal)
+        button.setTitleColor(UIColor.onBackground, for: .normal)
+        button.titleLabel?.font = .button
+        return button
+    }()
+    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -54,8 +65,9 @@ final class TeamBuilderVC: BaseViewController {
         super.viewDidLoad()
         setupUI()
         setupViewModelObservers()
+        setInitialTeam()
     }
-    
+        
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -64,8 +76,20 @@ final class TeamBuilderVC: BaseViewController {
       case row
     }
     
+    private func setInitialTeam() {
+        if viewModel.currentState.team == nil {
+            viewModel.createNewTeam()
+        }
+    }
+    
     func renderState(state: TeamBuilderState) {
         collectionView.reloadData()
+        guard let team = state.team else { return }
+        if team.pokemon.count < 3 {
+            actionButton.setTitle("Add Pokemon", for: .normal)
+        } else {
+            actionButton.setTitle("Save Team", for: .normal)
+        }
     }
     
     func handleEvent(event: TeamBuilderEvent) {
@@ -87,15 +111,31 @@ final class TeamBuilderVC: BaseViewController {
             make.bottom.leading.trailing.width.equalTo(view.safeAreaLayoutGuide)
             make.top.equalTo(toolbar.snp.bottom)
         }
+        
+        view.addSubview(actionButton)
+        actionButton.snp.makeConstraints { make in
+            make.bottom.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.width.equalTo(150)
+            make.height.equalTo(48)
+        }
     }
     
-    func setTeam(id: Int) {
+    func setTeam(id: UUID) {
         viewModel.retrieveTeamWithId(id)
     }
     
     private func chooseNewPokemon(pokemonIndex: Int) {
         viewModel.selectPokemonToChange(index: pokemonIndex)
         navigateTo(.pokemonList)
+    }
+    
+    @objc private func handleButtonPress() {
+        guard let team = viewModel.currentState.team else { return }
+        if team.pokemon.count < 3 {
+            chooseNewPokemon(pokemonIndex: team.pokemon.count)
+        } else {
+            viewModel.saveTeam()
+        }
     }
 }
 
@@ -108,7 +148,7 @@ extension TeamBuilderVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
             for: indexPath
         ) as? PokemonCollectionViewCell else { fatalError() }
         
-        let pokemon = viewModel.currentState.currentPokemonSelection[indexPath.row]
+        guard let pokemon = viewModel.currentState.team?.pokemon[indexPath.row] else { fatalError() }
         let fastMove = viewModel.currentState.moves.first(where: {
             $0.moveId == pokemon.fastMoves[0]
         })?.name ?? ""
@@ -134,7 +174,7 @@ extension TeamBuilderVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        let pokemon = viewModel.currentState.currentPokemonSelection[indexPath.row]
+        guard let pokemon = viewModel.currentState.team?.pokemon[indexPath.row] else { fatalError() }
 
         let height = PokemonCollectionViewCell.height(name: pokemon.speciesName, fastMove: pokemon.fastMoves[0], chargedMoves: pokemon.chargedMoves, collectionView: collectionView)
         
@@ -142,7 +182,7 @@ extension TeamBuilderVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.currentState.currentPokemonSelection.count
+        return viewModel.currentState.team?.pokemon.count ?? 0
     }
     
     func collectionView(
