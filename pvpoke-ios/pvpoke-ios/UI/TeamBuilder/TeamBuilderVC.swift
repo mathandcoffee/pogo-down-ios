@@ -150,10 +150,11 @@ extension TeamBuilderVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
         
         guard let pokemon = viewModel.currentState.team?.pokemon[indexPath.row] else { fatalError() }
         let fastMove = viewModel.currentState.moves.first(where: {
-            $0.moveId == pokemon.fastMoves[0]
+            $0.moveId == pokemon.fastMoves[pokemon.selectedFastMove ?? 0]
         })?.name ?? ""
         let chargedMoves = viewModel.currentState.moves.filter {
-            pokemon.chargedMoves.contains($0.moveId)
+            pokemon.chargedMoves[pokemon.selectedChargeMove?[0] ?? 0] == $0.moveId
+            || pokemon.chargedMoves[pokemon.selectedChargeMove?[1] ?? 1] == $0.moveId
         }.map {
             $0.name
         }

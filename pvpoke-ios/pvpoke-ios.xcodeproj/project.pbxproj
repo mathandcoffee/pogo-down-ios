@@ -84,7 +84,6 @@
 		78FA96A828CFF6470052805B /* EmptyTeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96A728CFF6470052805B /* EmptyTeamListView.swift */; };
 		78FA96AB28CFFEE80052805B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 78FA96AA28CFFEE80052805B /* Lottie */; };
 		78FA96B428D0F73C0052805B /* PokemonListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96B328D0F73C0052805B /* PokemonListVC.swift */; };
-		78FA96B728D1FEDC0052805B /* XLActionController in Frameworks */ = {isa = PBXBuildFile; productRef = 78FA96B628D1FEDC0052805B /* XLActionController */; };
 		78FA96D928D26A010052805B /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96D828D26A010052805B /* Toolbar.swift */; };
 		78FA96DF28D3ED510052805B /* DystoriaTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96DE28D3ED510052805B /* DystoriaTextView.swift */; };
 /* End PBXBuildFile section */
@@ -194,7 +193,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78FA96B728D1FEDC0052805B /* XLActionController in Frameworks */,
 				78FA917628CCE7880052805B /* Resolver-Dynamic in Frameworks */,
 				78FA917A28CCE7D70052805B /* SnapKit-Dynamic in Frameworks */,
 				78FA96AB28CFFEE80052805B /* Lottie in Frameworks */,
@@ -508,7 +506,6 @@
 				78FA917528CCE7880052805B /* Resolver-Dynamic */,
 				78FA917928CCE7D70052805B /* SnapKit-Dynamic */,
 				78FA96AA28CFFEE80052805B /* Lottie */,
-				78FA96B628D1FEDC0052805B /* XLActionController */,
 			);
 			productName = "pvpoke-ios";
 			productReference = 78FA913E28CCE7340052805B /* pvpoke-ios.app */;
@@ -586,7 +583,6 @@
 				78FA917428CCE7880052805B /* XCRemoteSwiftPackageReference "Resolver" */,
 				78FA917828CCE7D70052805B /* XCRemoteSwiftPackageReference "SnapKit" */,
 				78FA96A928CFFEE80052805B /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				78FA96B528D1FEDC0052805B /* XCRemoteSwiftPackageReference "XLActionController" */,
 			);
 			productRefGroup = 78FA913F28CCE7340052805B /* Products */;
 			projectDirPath = "";
@@ -869,7 +865,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4N56WJ2F37;
+				DEVELOPMENT_TEAM = 9AD7VK53K2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "pvpoke-ios/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -896,7 +892,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4N56WJ2F37;
+				DEVELOPMENT_TEAM = 9AD7VK53K2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "pvpoke-ios/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1058,14 +1054,6 @@
 				minimumVersion = 3.0.0;
 			};
 		};
-		78FA96B528D1FEDC0052805B /* XCRemoteSwiftPackageReference "XLActionController" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/xmartlabs/XLActionController";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1083,11 +1071,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 78FA96A928CFFEE80052805B /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
-		};
-		78FA96B628D1FEDC0052805B /* XLActionController */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 78FA96B528D1FEDC0052805B /* XCRemoteSwiftPackageReference "XLActionController" */;
-			productName = XLActionController;
 		};
 /* End XCSwiftPackageProductDependency section */
 

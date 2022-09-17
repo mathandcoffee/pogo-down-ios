@@ -16,7 +16,6 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
         super.init(
             initialState: TeamBuilderState(
                 createdAt: Date(),
-                currentPokemonSelection: [],
                 groupNames: [],
                 moves: [],
                 modifyingIndex: -1,
@@ -32,7 +31,6 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
         setState(
             TeamBuilderState(
                 createdAt: Date(),
-                currentPokemonSelection: currentState.currentPokemonSelection,
                 groupNames: dataLoadingService.groups.map { $0.name },
                 moves: dataLoadingService.moves,
                 modifyingIndex: -1,
@@ -47,7 +45,6 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
         setState(
             TeamBuilderState(
                 createdAt: Date(),
-                currentPokemonSelection: [],
                 groupNames: currentState.groupNames,
                 moves: currentState.moves,
                 modifyingIndex: -1,
@@ -62,7 +59,6 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
         setState(
             TeamBuilderState(
                 createdAt: Date(),
-                currentPokemonSelection: currentState.currentPokemonSelection,
                 groupNames: currentState.groupNames,
                 moves: currentState.moves,
                 modifyingIndex: index,
@@ -74,7 +70,7 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
     }
     
     func selectPokemon(pokemon: Pokemon) {
-        let newState = TeamBuilderState(createdAt: Date(), currentPokemonSelection: currentState.currentPokemonSelection, groupNames: currentState.groupNames, moves: currentState.moves, modifyingIndex: currentState.modifyingIndex, team: currentState.team, availablePokemon: currentState.availablePokemon, currentlySelectedPokemon: pokemon)
+        let newState = TeamBuilderState(createdAt: Date(), groupNames: currentState.groupNames, moves: currentState.moves, modifyingIndex: currentState.modifyingIndex, team: currentState.team, availablePokemon: currentState.availablePokemon, currentlySelectedPokemon: pokemon)
         setState(newState)
     }
     
@@ -85,12 +81,12 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
         } else {
             team.pokemon[modifyingIndex] = pokemon
         }
-        let newState = TeamBuilderState(createdAt: Date(), currentPokemonSelection: currentState.currentPokemonSelection, groupNames: currentState.groupNames, moves: currentState.moves, modifyingIndex: nil, team: team, availablePokemon: currentState.availablePokemon, currentlySelectedPokemon: currentState.currentlySelectedPokemon)
+        let newState = TeamBuilderState(createdAt: Date(), groupNames: currentState.groupNames, moves: currentState.moves, modifyingIndex: nil, team: team, availablePokemon: currentState.availablePokemon, currentlySelectedPokemon: currentState.currentlySelectedPokemon)
         setState(newState)
     }
     
     func createNewTeam() {
-        setState(TeamBuilderState(createdAt: Date(), currentPokemonSelection: currentState.currentPokemonSelection, groupNames: currentState.groupNames, moves: currentState.moves, modifyingIndex: currentState.modifyingIndex, team: Team(id: UUID(), name: "", pokemon: [], cup: nil, group: nil), availablePokemon: currentState.availablePokemon, currentlySelectedPokemon: currentState.currentlySelectedPokemon))
+        setState(TeamBuilderState(createdAt: Date(),  groupNames: currentState.groupNames, moves: currentState.moves, modifyingIndex: currentState.modifyingIndex, team: Team(id: UUID(), name: "", pokemon: [], cup: nil, group: nil), availablePokemon: currentState.availablePokemon, currentlySelectedPokemon: currentState.currentlySelectedPokemon))
     }
     
     func saveTeam() {

@@ -39,7 +39,7 @@ final class PokemonListVC: UIViewController, UIViewControllerTransitioningDelega
             title: nil,
             showSearch: true,
             dismissAction: { [weak self] in
-                self?.dismiss()
+                self?.closeActionSheet()
         })
         let toolbar = Toolbar(configuration: configuration)
         toolbar.backgroundColor = .background
@@ -159,6 +159,20 @@ final class PokemonListVC: UIViewController, UIViewControllerTransitioningDelega
             make.height.equalTo(24)
         }
         
+        let saveButton = UIButton()
+        saveButton.addTarget(self, action: #selector(closeActionSheet), for: .touchUpInside)
+        saveButton.backgroundColor = .primary
+        saveButton.setTitle("Save Pokemon", for: .normal)
+        saveButton.titleLabel?.font = .button
+        saveButton.layer.cornerRadius = 8
+        view.addSubview(saveButton)
+        saveButton.snp.makeConstraints { make in
+            make.top.equalTo(secondStrongMoveSelectionLabel.snp.bottom).offset(36)
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.height.equalTo(32)
+            make.bottom.equalToSuperview().inset(12)
+        }
+        
         view.isHidden = true
         view.layer.cornerRadius = 8
         view.layer.borderWidth = 2
@@ -216,7 +230,7 @@ final class PokemonListVC: UIViewController, UIViewControllerTransitioningDelega
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(48)
             make.centerY.equalTo(view.safeAreaLayoutGuide)
             make.width.equalToSuperview().inset(48)
-            make.height.equalTo(220)
+            make.height.equalTo(300)
         }
         
         view.addSubview(movePicker)
@@ -232,32 +246,42 @@ final class PokemonListVC: UIViewController, UIViewControllerTransitioningDelega
     }
     
     @objc private func selectFastMove() {
-        movePickerDataSource = PokemonMovePickerDataSource(moves: viewModel.currentState.moves.filter { move in viewModel.currentState.currentlySelectedPokemon?.fastMoves.contains(move.moveId) ?? false }, moveType: .fast)
+        let moveStrings = viewModel.currentState.currentlySelectedPokemon!.fastMoves.map { moveId in
+            viewModel.currentState.moves.first(where: {$0.moveId == moveId})!.name
+        }
+        movePickerDataSource = PokemonMovePickerDataSource(moves: moveStrings, moveType: .fast)
         movePicker.isHidden = false
     }
     
     @objc private func selectFirstStrongMove() {
-        movePickerDataSource = PokemonMovePickerDataSource(moves: viewModel.currentState.moves.filter { move in viewModel.currentState.currentlySelectedPokemon?.chargedMoves.contains(move.moveId) ?? false }, moveType: .firstCharge)
+        let moveStrings = viewModel.currentState.currentlySelectedPokemon!.chargedMoves.map { moveId in
+            viewModel.currentState.moves.first(where: {$0.moveId == moveId})!.name
+        }
+        movePickerDataSource = PokemonMovePickerDataSource(moves: moveStrings, moveType: .firstCharge)
         movePicker.isHidden = false
     }
     
     @objc private func selectSecondStrongMove() {
-        movePickerDataSource = PokemonMovePickerDataSource(moves: viewModel.currentState.moves.filter { move in viewModel.currentState.currentlySelectedPokemon?.chargedMoves.contains(move.moveId) ?? false }, moveType: .secondCharge)
+        let moveStrings = viewModel.currentState.currentlySelectedPokemon!.chargedMoves.map { moveId in
+            viewModel.currentState.moves.first(where: {$0.moveId == moveId})!.name
+        }
+        movePickerDataSource = PokemonMovePickerDataSource(moves: moveStrings, moveType: .secondCharge)
         movePicker.isHidden = false
     }
     
     @objc private func swipeGestureDidRecognize(_ gesture: UISwipeGestureRecognizer) {
-        self.dismiss()
+        self.closeActionSheet()
     }
     
     @objc private func tapGestureDidRecognize(_ gesture: UITapGestureRecognizer) {
-        self.dismiss()
+        self.closeActionSheet()
     }
     
-    private  func dismiss(_ completion: (() -> ())? = nil) {
-        presentingViewController?.dismiss(animated: true) {
-            completion?()
+    @objc private func closeActionSheet() {
+        if let pokemon = viewModel.currentState.currentlySelectedPokemon {
+            viewModel.changePokemonAtChangePosition(pokemon: pokemon)
         }
+        presentingViewController?.dismiss(animated: true)
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -406,6 +430,9 @@ extension PokemonListVC: UIPickerViewDelegate {
             let dataSource = pickerView.dataSource as? PokemonMovePickerDataSource,
             var currentSelectedPokemon = viewModel.currentState.currentlySelectedPokemon else { return }
         
+        if currentSelectedPokemon.selectedChargeMove == nil {
+            currentSelectedPokemon.selectedChargeMove = [0, 1]
+        }
         switch (dataSource.type) {
         case .fast:
             currentSelectedPokemon.selectedFastMove = row
@@ -430,6 +457,6 @@ extension PokemonListVC: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let dataSource = pickerView.dataSource as? PokemonMovePickerDataSource
         pickerView.subviews[1].backgroundColor = .onBackground.withAlphaComponent(0.3)
-        return NSAttributedString(string: dataSource?.moves[row].name ?? "", attributes: [NSAttributedString.Key.foregroundColor: UIColor.onBackground])
+        return NSAttributedString(string: (dataSource?.moves[row])!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.onBackground])
     }
 }

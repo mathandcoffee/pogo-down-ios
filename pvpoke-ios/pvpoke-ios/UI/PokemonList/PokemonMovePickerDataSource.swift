@@ -12,11 +12,11 @@ final class PokemonMovePickerDataSource: NSObject, UIPickerViewDataSource {
     
     @Injected private var viewModel: TeamBuilderViewModel
     
-    let moves: [Move]
+    let moves: [String]
     
     let type: MoveType
     
-    init(moves: [Move], moveType: MoveType) {
+    init(moves: [String], moveType: MoveType) {
         self.moves = moves
         self.type = moveType
     }
