@@ -68,6 +68,7 @@ extension UIViewController {
                 viewController.modalTransitionStyle = .crossDissolve
             case .teamBuilder:
                 viewController = TeamBuilderVC()
+                (viewController as? TeamBuilderVC)?.createNewTeam()
                 viewController.modalPresentationStyle = .fullScreen
             case .pokemonList:
                 self.present(PokemonListVC(), animated: true)

@@ -9,6 +9,7 @@ import Foundation
 
 struct TeamListState: State {
     let createdAt: Date
-    let teams: [Team]
+    let teams: [TeamEntity]
     let moves: [Move]
+    let pokemon: [Pokemon]
 }

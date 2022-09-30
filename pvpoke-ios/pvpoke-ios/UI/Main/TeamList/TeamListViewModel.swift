@@ -11,22 +11,19 @@ import Resolver
 final class TeamListViewModel: BaseViewModel<TeamListState, TeamListEvent> {
     
     @Injected private var dataLoadingService: DataLoadingService
+    @Injected private var coreDataController: CoreDataController
     
     init() {
-        super.init(initialState: TeamListState(createdAt: Date(), teams: [], moves: []))
-        loadInitialState()
+        super.init(initialState: TeamListState(createdAt: Date(), teams: [], moves: [], pokemon: []))
     }
     
-     func loadInitialState() {
-        setState(TeamListState(createdAt: Date(), teams: [
-        Team(id: UUID(), name: "Anal Fissure", pokemon: [
-            dataLoadingService.pokemon.first(where: { $0.speciesName == "Rhyperior"})!,
-            dataLoadingService.pokemon.first(where: { $0.speciesName == "Rhyperior"})!,
-            dataLoadingService.pokemon.first(where: { $0.speciesName == "Rhyperior"})!
-        ], cup: dataLoadingService.cups.first!, group: dataLoadingService.groups.first!)], moves: []))
+     func loadTeams() {
+        setState(TeamListState(createdAt: Date(), teams:
+                                coreDataController.getTeams(), moves: [], pokemon: dataLoadingService.pokemon))
     }
     
     func navigateToTeamAtIndex(_ index: Int) {
-        sendEvent(.showTeam(teamId: currentState.teams[index].id))
+        guard let id = currentState.teams[index].id else { return }
+        sendEvent(.showTeam(teamId: id))
     }
 }

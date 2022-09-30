@@ -85,6 +85,7 @@ final class PokemonTeamView: UIView {
     }
     
     func configure(names: [String], tintColors: [UIColor]) {
+        guard names.count > 2, tintColors.count > 2 else { return }
         firstView.configure(name: names[0], tintColor: tintColors[0])
         secondView.configure(name: names[1], tintColor: tintColors[1])
         thirdView.configure(name: names[2], tintColor: tintColors[2])

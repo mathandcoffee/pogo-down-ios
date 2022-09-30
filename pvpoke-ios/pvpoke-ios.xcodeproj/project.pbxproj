@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		784FD4F128D606D000658C60 /* PokemonMovePickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784FD4F028D606D000658C60 /* PokemonMovePickerDataSource.swift */; };
+		787716F128E5E06C0008750B /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787716F028E5E06C0008750B /* CoreDataController.swift */; };
 		78FA914228CCE7340052805B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA914128CCE7340052805B /* AppDelegate.swift */; };
 		78FA914428CCE7340052805B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA914328CCE7340052805B /* SceneDelegate.swift */; };
 		78FA914C28CCE7340052805B /* pvpoke_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78FA914A28CCE7340052805B /* pvpoke_ios.xcdatamodeld */; };
@@ -78,7 +79,6 @@
 		78FA969C28CE37590052805B /* TeamListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA969B28CE37590052805B /* TeamListViewModel.swift */; };
 		78FA969E28CE37600052805B /* TeamListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA969D28CE37600052805B /* TeamListState.swift */; };
 		78FA96A028CE37690052805B /* TeamListEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA969F28CE37690052805B /* TeamListEvent.swift */; };
-		78FA96A228CE38910052805B /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96A128CE38910052805B /* Team.swift */; };
 		78FA96A428CE39E50052805B /* PokemonTeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96A328CE39E50052805B /* PokemonTeamCollectionViewCell.swift */; };
 		78FA96A628CE3BAD0052805B /* PokemonTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96A528CE3BAD0052805B /* PokemonTeamView.swift */; };
 		78FA96A828CFF6470052805B /* EmptyTeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA96A728CFF6470052805B /* EmptyTeamListView.swift */; };
@@ -107,6 +107,7 @@
 
 /* Begin PBXFileReference section */
 		784FD4F028D606D000658C60 /* PokemonMovePickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonMovePickerDataSource.swift; sourceTree = "<group>"; };
+		787716F028E5E06C0008750B /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		78FA913E28CCE7340052805B /* pvpoke-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pvpoke-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78FA914128CCE7340052805B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78FA914328CCE7340052805B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,7 +180,6 @@
 		78FA969B28CE37590052805B /* TeamListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListViewModel.swift; sourceTree = "<group>"; };
 		78FA969D28CE37600052805B /* TeamListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListState.swift; sourceTree = "<group>"; };
 		78FA969F28CE37690052805B /* TeamListEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListEvent.swift; sourceTree = "<group>"; };
-		78FA96A128CE38910052805B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		78FA96A328CE39E50052805B /* PokemonTeamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTeamCollectionViewCell.swift; sourceTree = "<group>"; };
 		78FA96A528CE3BAD0052805B /* PokemonTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTeamView.swift; sourceTree = "<group>"; };
 		78FA96A728CFF6470052805B /* EmptyTeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTeamListView.swift; sourceTree = "<group>"; };
@@ -382,6 +382,7 @@
 				78FA914A28CCE7340052805B /* pvpoke_ios.xcdatamodeld */,
 				78FA965628CD06780052805B /* gamemaster */,
 				78FA964528CCFB9E0052805B /* JSONRepresentations */,
+				787716F028E5E06C0008750B /* CoreDataController.swift */,
 			);
 			path = RawData;
 			sourceTree = "<group>";
@@ -471,7 +472,6 @@
 				78FA969B28CE37590052805B /* TeamListViewModel.swift */,
 				78FA969D28CE37600052805B /* TeamListState.swift */,
 				78FA969F28CE37690052805B /* TeamListEvent.swift */,
-				78FA96A128CE38910052805B /* Team.swift */,
 				78FA96A728CFF6470052805B /* EmptyTeamListView.swift */,
 			);
 			path = TeamList;
@@ -642,7 +642,6 @@
 				78FA91B828CCEB210052805B /* Uninitializable.swift in Sources */,
 				78FA96B428D0F73C0052805B /* PokemonListVC.swift in Sources */,
 				78FA969028CE03990052805B /* String+Dystoria.swift in Sources */,
-				78FA96A228CE38910052805B /* Team.swift in Sources */,
 				78FA964B28CCFC710052805B /* Archetype.swift in Sources */,
 				78FA91C128CCEB770052805B /* State.swift in Sources */,
 				78FA966728CD2C180052805B /* TeamBuilderViewModel.swift in Sources */,
@@ -652,6 +651,7 @@
 				78FA91E928CCF3650052805B /* DataLoadingService.swift in Sources */,
 				78FA966928CD3C960052805B /* Group.swift in Sources */,
 				78FA964928CCFC070052805B /* PokemonType.swift in Sources */,
+				787716F128E5E06C0008750B /* CoreDataController.swift in Sources */,
 				78FA91BE28CCEB770052805B /* BaseViewController.swift in Sources */,
 				78FA91D128CCEBA10052805B /* SplashVC.swift in Sources */,
 				78FA966E28CD69730052805B /* InfoViewModel.swift in Sources */,

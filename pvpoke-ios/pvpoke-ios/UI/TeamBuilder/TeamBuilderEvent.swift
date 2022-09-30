@@ -8,5 +8,5 @@
 import Foundation
 
 enum TeamBuilderEvent: Event {
-    case teamSaved(team: Team)
+    case teamSaved(team: TeamEntity)
 }

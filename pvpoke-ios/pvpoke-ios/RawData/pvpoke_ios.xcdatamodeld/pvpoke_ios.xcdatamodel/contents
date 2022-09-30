@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="PokemonEntity" representedClassName="PokemonEntity" syncable="YES" codeGenerationType="class">
         <attribute name="atkIv" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="defIv" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="fastMove" attributeType="String"/>
+        <attribute name="fastMove" optional="YES" attributeType="String"/>
         <attribute name="hpIv" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="name" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="strongMoveOne" optional="YES" attributeType="String"/>
         <attribute name="strongMoveTwo" optional="YES" attributeType="String"/>
     </entity>
     <entity name="TeamEntity" representedClassName="TeamEntity" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="pokemon" attributeType="Transformable" valueTransformerName="" customClassName=".Array&lt;PokemonEntity&gt;"/>
+        <attribute name="pokemon" optional="YES" transient="YES" attributeType="Transformable" valueTransformerName="" customClassName=".Array&lt;PokemonEntity&gt;"/>
     </entity>
-    <elements>
-        <element name="PokemonEntity" positionX="-63" positionY="-18" width="128" height="149"/>
-        <element name="TeamEntity" positionX="-45" positionY="54" width="128" height="59"/>
-    </elements>
 </model>

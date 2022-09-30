@@ -63,6 +63,11 @@ final class TeamListVC: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.loadTeams()
+    }
+    
     func renderState(state: TeamListState) {
         collectionView.reloadData()
         collectionView.isHidden = state.teams.isEmpty
@@ -121,7 +126,14 @@ extension TeamListVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
             for: indexPath
         ) as? PokemonTeamCollectionViewCell else { fatalError() }
         let team = viewModel.currentState.teams[indexPath.row]
-        cell.configure(team: team)
+        let pokemon: [Pokemon] = team.pokemon?.map {
+            let name = $0.name
+            guard let mapped = viewModel.currentState.pokemon.filter({ pokemonFiltered in
+                name == pokemonFiltered.speciesName
+            }).first else { fatalError() }
+            return mapped
+        } ?? []
+        cell.configure(pokemon: pokemon)
         return cell
     }
     

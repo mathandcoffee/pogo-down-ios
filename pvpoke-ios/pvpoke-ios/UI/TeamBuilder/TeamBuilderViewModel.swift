@@ -11,6 +11,7 @@ import Resolver
 final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEvent> {
     
     @Injected private var dataLoadingService: DataLoadingService
+    @Injected private var coreDataController: CoreDataController
     
     init() {
         super.init(
@@ -48,7 +49,7 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
                 groupNames: currentState.groupNames,
                 moves: currentState.moves,
                 modifyingIndex: -1,
-                team: nil,
+                team: coreDataController.getTeams().filter { $0.id == id }.first,
                 availablePokemon: currentState.availablePokemon,
                 currentlySelectedPokemon: currentState.currentlySelectedPokemon
             )
@@ -70,23 +71,61 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
     }
     
     func selectPokemon(pokemon: Pokemon) {
-        let newState = TeamBuilderState(createdAt: Date(), groupNames: currentState.groupNames, moves: currentState.moves, modifyingIndex: currentState.modifyingIndex, team: currentState.team, availablePokemon: currentState.availablePokemon, currentlySelectedPokemon: pokemon)
+        let newState = TeamBuilderState(
+            createdAt: Date(),
+            groupNames: currentState.groupNames,
+            moves: currentState.moves,
+            modifyingIndex: currentState.modifyingIndex,
+            team: currentState.team,
+            availablePokemon: currentState.availablePokemon,
+            currentlySelectedPokemon: pokemon)
         setState(newState)
     }
     
     func changePokemonAtChangePosition(pokemon: Pokemon) {
-        guard let modifyingIndex = currentState.modifyingIndex, var team = currentState.team else { return }
-        if modifyingIndex >= team.pokemon.count {
-            team.pokemon.append(pokemon)
+        guard
+            let modifyingIndex = currentState.modifyingIndex,
+            let team = currentState.team,
+            var teamPokemon = team.pokemon else { return }
+        let fastMoveSelection = pokemon.selectedFastMove ?? 0
+        let strongMoveSelections = pokemon.selectedChargeMove ?? [0, 1]
+        let pokemonEntity = coreDataController.addPokemon(
+            atkIv: 15,
+            defIv: 15,
+            hpIv: 15,
+            fastMove: pokemon.fastMoves[fastMoveSelection],
+            name: pokemon.speciesName,
+            strongMoveOne: pokemon.chargedMoves[strongMoveSelections[0]],
+            strongMoveTwo: pokemon.chargedMoves[strongMoveSelections[1]])
+        if modifyingIndex >= teamPokemon.count {
+            teamPokemon.append(pokemonEntity)
         } else {
-            team.pokemon[modifyingIndex] = pokemon
+            teamPokemon[modifyingIndex] = pokemonEntity
         }
-        let newState = TeamBuilderState(createdAt: Date(), groupNames: currentState.groupNames, moves: currentState.moves, modifyingIndex: nil, team: team, availablePokemon: currentState.availablePokemon, currentlySelectedPokemon: currentState.currentlySelectedPokemon)
+        
+        coreDataController.editTeam(team: team, pokemon: teamPokemon)
+        
+        let newState = TeamBuilderState(
+            createdAt: Date(),
+            groupNames: currentState.groupNames,
+            moves: currentState.moves,
+            modifyingIndex: nil,
+            team: team,
+            availablePokemon: currentState.availablePokemon,
+            currentlySelectedPokemon: currentState.currentlySelectedPokemon)
         setState(newState)
     }
     
     func createNewTeam() {
-        setState(TeamBuilderState(createdAt: Date(),  groupNames: currentState.groupNames, moves: currentState.moves, modifyingIndex: currentState.modifyingIndex, team: Team(id: UUID(), name: "", pokemon: [], cup: nil, group: nil), availablePokemon: currentState.availablePokemon, currentlySelectedPokemon: currentState.currentlySelectedPokemon))
+        setState(
+            TeamBuilderState(
+                createdAt: Date(),
+                groupNames: currentState.groupNames,
+                moves: currentState.moves,
+                modifyingIndex: 0,
+                team: coreDataController.createNewTeam(),
+                availablePokemon: currentState.availablePokemon,
+                currentlySelectedPokemon: nil))
     }
     
     func saveTeam() {
@@ -96,6 +135,10 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
     
     func filterByString(_ searchString: String?) {
         
+    }
+    
+    func getTypeForPokemonEntity(pokemon: PokemonEntity) -> PokemonType {
+        return currentState.availablePokemon.filter { pokemon.name == $0.speciesName }.first?.types.first ?? .none
     }
 }
 

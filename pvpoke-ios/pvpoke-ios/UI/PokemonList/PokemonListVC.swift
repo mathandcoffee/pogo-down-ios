@@ -9,7 +9,8 @@ import UIKit
 import Resolver
 import SnapKit
 
-final class PokemonListVC: UIViewController, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
+final class PokemonListVC:
+    UIViewController, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
     
     @Injected private var viewModel: TeamBuilderViewModel
     
@@ -21,7 +22,8 @@ final class PokemonListVC: UIViewController, UIViewControllerTransitioningDelega
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.register(
             PokemonCollectionViewCell.self,
-            forCellWithReuseIdentifier: UICollectionViewCell.cellIdentifierForType(type: PokemonCollectionViewCell.self))
+            forCellWithReuseIdentifier: UICollectionViewCell.cellIdentifierForType(
+                type: PokemonCollectionViewCell.self))
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.layoutMargins = UIEdgeInsets(top: 16, left: 24, bottom: 16, right: 24)
@@ -219,7 +221,8 @@ final class PokemonListVC: UIViewController, UIViewControllerTransitioningDelega
         
         view.addSubview(containerDismissOverlay)
         containerDismissOverlay.isHidden = true
-        containerDismissOverlay.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideContainer)))
+        containerDismissOverlay.addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(hideContainer)))
         containerDismissOverlay.backgroundColor = .surface.withAlphaComponent(0.5)
         containerDismissOverlay.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.height.width.equalToSuperview()
@@ -284,7 +287,11 @@ final class PokemonListVC: UIViewController, UIViewControllerTransitioningDelega
         presentingViewController?.dismiss(animated: true)
     }
     
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController,
+        source: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
         isPresenting = true
         return self
     }
@@ -325,7 +332,12 @@ final class PokemonListVC: UIViewController, UIViewControllerTransitioningDelega
         }
     }
     
-    func presentView(_ presentedView: UIView, presentingView: UIView, animationDuration: Double, completion: ((_ completed: Bool) -> Void)?) {
+    func presentView(
+        _ presentedView: UIView,
+        presentingView: UIView,
+        animationDuration: Double,
+        completion: ((_ completed: Bool) -> Void)?
+    ) {
         UIView.animate(withDuration: animationDuration,
                        delay: 0.1,
                        usingSpringWithDamping: 1.0,
@@ -339,7 +351,12 @@ final class PokemonListVC: UIViewController, UIViewControllerTransitioningDelega
             })
     }
     
-    func dismissView(_ presentedView: UIView, presentingView: UIView, animationDuration: Double, completion: ((_ completed: Bool) -> Void)?) {
+    func dismissView(
+        _ presentedView: UIView,
+        presentingView: UIView,
+        animationDuration: Double,
+        completion: ((_ completed: Bool) -> Void)?
+    ) {
         
         UIView.animate(withDuration: animationDuration,
                        delay: 0.1,
@@ -356,7 +373,10 @@ final class PokemonListVC: UIViewController, UIViewControllerTransitioningDelega
 }
 
 extension PokemonListVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: UICollectionViewCell.cellIdentifierForType(
                 type: PokemonCollectionViewCell.self
@@ -389,7 +409,11 @@ extension PokemonListVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         let pokemon = viewModel.currentState.availablePokemon[indexPath.row]
-        let height = PokemonCollectionViewCell.height(name: pokemon.speciesName, fastMove: pokemon.fastMoves[0], chargedMoves: pokemon.chargedMoves, collectionView: collectionView)
+        let height = PokemonCollectionViewCell.height(
+            name: pokemon.speciesName,
+            fastMove: pokemon.fastMoves[0],
+            chargedMoves: pokemon.chargedMoves,
+            collectionView: collectionView)
         
         return CGSize(width: collectionView.frame.width - 32, height: height)
     }
@@ -410,13 +434,19 @@ extension PokemonListVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
         let currentSelectedPokemon = viewModel.currentState.availablePokemon[indexPath.row]
         selectedPokemonNameView.text = currentSelectedPokemon.speciesName
         viewModel.selectPokemon(pokemon: currentSelectedPokemon)
-        guard let fastMove = viewModel.currentState.moves.first(where: { $0.moveId == currentSelectedPokemon.fastMoves[0] }) else { return }
+        guard let fastMove = viewModel.currentState.moves.first(where: {
+            $0.moveId == currentSelectedPokemon.fastMoves[0]
+        }) else { return }
         fastMoveSelectionLabel.text = fastMove.name
         fastMoveSelectionLabel.backgroundColor = .getColorForPokemonType(pokemonType: fastMove.type)
-        guard let firstStrongMove = viewModel.currentState.moves.first(where: { $0.moveId == currentSelectedPokemon.chargedMoves[0] }) else { return }
+        guard let firstStrongMove = viewModel.currentState.moves.first(where: {
+            $0.moveId == currentSelectedPokemon.chargedMoves[0]
+        }) else { return }
         firstStrongMoveSelectionLabel.text = firstStrongMove.name
         firstStrongMoveSelectionLabel.backgroundColor = .getColorForPokemonType(pokemonType: firstStrongMove.type)
-        guard let secondStrongMove = viewModel.currentState.moves.first(where: { $0.moveId == currentSelectedPokemon.chargedMoves[1] }) else { return }
+        guard let secondStrongMove = viewModel.currentState.moves.first(where: {
+            $0.moveId == currentSelectedPokemon.chargedMoves[1]
+        }) else { return }
         secondStrongMoveSelectionLabel.text = secondStrongMove.name
         secondStrongMoveSelectionLabel.backgroundColor = .getColorForPokemonType(pokemonType: secondStrongMove.type)
         moveSelectionContainer.isHidden = false
@@ -433,20 +463,29 @@ extension PokemonListVC: UIPickerViewDelegate {
         if currentSelectedPokemon.selectedChargeMove == nil {
             currentSelectedPokemon.selectedChargeMove = [0, 1]
         }
+        if currentSelectedPokemon.selectedFastMove == nil {
+            currentSelectedPokemon.selectedFastMove = 0
+        }
         switch (dataSource.type) {
         case .fast:
             currentSelectedPokemon.selectedFastMove = row
-            guard let move = viewModel.currentState.moves.first(where: { $0.moveId == currentSelectedPokemon.fastMoves[row] }) else { return }
+            guard let move = viewModel.currentState.moves.first(where: {
+                $0.moveId == currentSelectedPokemon.fastMoves[row]
+            }) else { return }
             fastMoveSelectionLabel.text = move.name
             fastMoveSelectionLabel.backgroundColor = .getColorForPokemonType(pokemonType: move.type)
         case .firstCharge:
             currentSelectedPokemon.selectedChargeMove?[0] = row
-            guard let move = viewModel.currentState.moves.first(where: { $0.moveId == currentSelectedPokemon.chargedMoves[row] }) else { return }
+            guard let move = viewModel.currentState.moves.first(where: {
+                $0.moveId == currentSelectedPokemon.chargedMoves[row] }
+            ) else { return }
             firstStrongMoveSelectionLabel.text = move.name
             firstStrongMoveSelectionLabel.backgroundColor = .getColorForPokemonType(pokemonType: move.type)
         case.secondCharge:
             currentSelectedPokemon.selectedChargeMove?[1] = row
-            guard let move = viewModel.currentState.moves.first(where: { $0.moveId == currentSelectedPokemon.chargedMoves[row] }) else { return }
+            guard let move = viewModel.currentState.moves.first(where: {
+                $0.moveId == currentSelectedPokemon.chargedMoves[row]
+            }) else { return }
             secondStrongMoveSelectionLabel.text = move.name
             secondStrongMoveSelectionLabel.backgroundColor = .getColorForPokemonType(pokemonType: move.type)
         }
@@ -454,9 +493,15 @@ extension PokemonListVC: UIPickerViewDelegate {
         movePicker.isHidden = true
     }
     
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    func pickerView(
+        _ pickerView: UIPickerView,
+        attributedTitleForRow row: Int,
+        forComponent component: Int
+    ) -> NSAttributedString? {
         let dataSource = pickerView.dataSource as? PokemonMovePickerDataSource
         pickerView.subviews[1].backgroundColor = .onBackground.withAlphaComponent(0.3)
-        return NSAttributedString(string: (dataSource?.moves[row])!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.onBackground])
+        return NSAttributedString(
+            string: (dataSource?.moves[row])!,
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.onBackground])
     }
 }

@@ -52,11 +52,11 @@ final class PokemonTeamCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configure(team: Team) {
-        nameLabel.text = team.name
+    func configure(pokemon: [Pokemon]) {
+        nameLabel.text = "Team Allen"
         teamView.configure(
-            names: team.pokemon.map { $0.speciesName },
-            tintColors: team.pokemon.map { UIColor.getColorForPokemonType(pokemonType: $0.types[0]) })
+            names: pokemon.map { $0.speciesName },
+            tintColors: pokemon.map { UIColor.getColorForPokemonType(pokemonType: $0.types[0]) })
     }
     
     static func height() -> CGFloat {
