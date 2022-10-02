@@ -85,7 +85,7 @@ final class TeamBuilderVC: BaseViewController {
     func renderState(state: TeamBuilderState) {
         collectionView.reloadData()
         guard let pokemon = state.team?.pokemonArray() else { return }
-        actionButton.isHidden = pokemon.count >= 6
+        actionButton.isHidden = pokemon.count >= 3
     }
     
     func handleEvent(event: TeamBuilderEvent) {
@@ -132,7 +132,7 @@ final class TeamBuilderVC: BaseViewController {
     @objc private func handleButtonPress() {
         guard let team = viewModel.currentState.team else { return }
         let pokemon = team.pokemonArray()
-        if pokemon.count < 6 {
+        if pokemon.count < 3 {
             chooseNewPokemon(pokemonIndex: pokemon.count)
         }
     }

@@ -10,12 +10,16 @@ import Resolver
 import Combine
 
 protocol TeamBuilderAnalytics {
-    func runTeamAnalysis(team: [Pokemon]) -> Future<TeamBuilderResults, Never>
+    func runTeamAnalysis(team: [Pokemon], cp: Int, cup: Cup, exclusionList: [Pokemon]) -> Future<TeamBuilderResults, Never>
 }
 
 final class TeamBuilderAnalyticsImpl: TeamBuilderAnalytics {
     
-    func runTeamAnalysis(team: [Pokemon]) -> Future<TeamBuilderResults, Never> {
+    private var shieldMode: ShieldMode = .single
+    private var chargedMoveCountOverride = 2
+    private var useRecommendedMoves = true
+    
+    func runTeamAnalysis(team: [Pokemon], cp: Int, cup: Cup, exclusionList: [Pokemon]) -> Future<TeamBuilderResults, Never> {
         return Future { promise in
             promise(.success(TeamBuilderResults()))
         }
