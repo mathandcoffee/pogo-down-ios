@@ -15,6 +15,8 @@
 		787D6EFC28E9D25000C545F9 /* Battle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D6EFB28E9D25000C545F9 /* Battle.swift */; };
 		787D6EFE28E9D4D800C545F9 /* Traits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D6EFD28E9D4D800C545F9 /* Traits.swift */; };
 		787D6F0028E9D97E00C545F9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D6EFF28E9D97E00C545F9 /* Player.swift */; };
+		787D6F0228E9DED800C545F9 /* PokemonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D6F0128E9DED800C545F9 /* PokemonState.swift */; };
+		787D6F0428E9E1E700C545F9 /* TrainingAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D6F0328E9E1E700C545F9 /* TrainingAI.swift */; };
 		78FA914228CCE7340052805B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA914128CCE7340052805B /* AppDelegate.swift */; };
 		78FA914428CCE7340052805B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA914328CCE7340052805B /* SceneDelegate.swift */; };
 		78FA914C28CCE7340052805B /* pvpoke_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78FA914A28CCE7340052805B /* pvpoke_ios.xcdatamodeld */; };
@@ -120,6 +122,8 @@
 		787D6EFB28E9D25000C545F9 /* Battle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battle.swift; sourceTree = "<group>"; };
 		787D6EFD28E9D4D800C545F9 /* Traits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traits.swift; sourceTree = "<group>"; };
 		787D6EFF28E9D97E00C545F9 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		787D6F0128E9DED800C545F9 /* PokemonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonState.swift; sourceTree = "<group>"; };
+		787D6F0328E9E1E700C545F9 /* TrainingAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingAI.swift; sourceTree = "<group>"; };
 		78FA913E28CCE7340052805B /* pvpoke-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pvpoke-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78FA914128CCE7340052805B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78FA914328CCE7340052805B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -243,6 +247,7 @@
 				787D6EF928E9D14A00C545F9 /* ShieldMode.swift */,
 				787D6EFD28E9D4D800C545F9 /* Traits.swift */,
 				787D6EFF28E9D97E00C545F9 /* Player.swift */,
+				787D6F0128E9DED800C545F9 /* PokemonState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -477,6 +482,7 @@
 				78FA967628CD6DE20052805B /* Results */,
 				78FA967428CD6D4B0052805B /* TeamBuilderAnalytics.swift */,
 				787D6EFB28E9D25000C545F9 /* Battle.swift */,
+				787D6F0328E9E1E700C545F9 /* TrainingAI.swift */,
 			);
 			path = Analytics;
 			sourceTree = "<group>";
@@ -711,6 +717,7 @@
 				78FA914C28CCE7340052805B /* pvpoke_ios.xcdatamodeld in Sources */,
 				78FA966128CD2BEB0052805B /* TeamBuilderVC.swift in Sources */,
 				78FA91A028CCE9C20052805B /* UIColor+Dystoria.swift in Sources */,
+				787D6F0228E9DED800C545F9 /* PokemonState.swift in Sources */,
 				78FA91AF28CCE9C20052805B /* UIFont+Dystoria.swift in Sources */,
 				78FA91B728CCEB210052805B /* ResolvedModule.swift in Sources */,
 				787D6EF728E9C65E00C545F9 /* PokemonAnalysisCollectionViewCell.swift in Sources */,
@@ -732,6 +739,7 @@
 				787D6F0028E9D97E00C545F9 /* Player.swift in Sources */,
 				78FA91AA28CCE9C20052805B /* Int+Dystoria.swift in Sources */,
 				78FA967228CD69860052805B /* InfoEvent.swift in Sources */,
+				787D6F0428E9E1E700C545F9 /* TrainingAI.swift in Sources */,
 				78FA91AC28CCE9C20052805B /* CGSize+Dystoria.swift in Sources */,
 				78FA91B328CCE9C20052805B /* UIImage+Dystoria.swift in Sources */,
 				78FA969E28CE37600052805B /* TeamListState.swift in Sources */,
