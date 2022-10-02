@@ -97,10 +97,19 @@ final class PokemonCollectionViewCell: UICollectionViewCell {
         return "Fast Move: \(fastMove)\nCharged Moves: \(strongMoves[0]), \(strongMoves[1])"
     }
     
-    static func height(name: String, fastMove: String, chargedMoves: [String], collectionView: UICollectionView) -> CGFloat {
+    static func height(pokemon: Pokemon, collectionView: UICollectionView) -> CGFloat {
         let textWidth = collectionView.frame.width - 16
-        let textHeight = name.height(withConstrainedWidth: textWidth, font: .headline2)
-        + movesString(fastMove: fastMove, strongMoves: chargedMoves).height(withConstrainedWidth: textWidth, font: .body2) * 2
+        
+        var chargedMoves = [pokemon.chargedMoves[pokemon.selectedChargeMove?[0] ?? 0]]
+        if pokemon.chargedMoves.count > 1 {
+            chargedMoves.append(pokemon.chargedMoves[pokemon.selectedChargeMove?[1] ?? 1])
+        }
+        
+        let textHeight = pokemon.speciesName.height(withConstrainedWidth: textWidth, font: .headline2)
+        + movesString(
+            fastMove: pokemon.fastMoves[pokemon.selectedFastMove ?? 0],
+            strongMoves: chargedMoves
+        ).height(withConstrainedWidth: textWidth, font: .body2) * 2
         return textHeight
     }
     

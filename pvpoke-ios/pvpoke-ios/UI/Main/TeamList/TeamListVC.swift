@@ -126,14 +126,7 @@ extension TeamListVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
             for: indexPath
         ) as? PokemonTeamCollectionViewCell else { fatalError() }
         let team = viewModel.currentState.teams[indexPath.row]
-        let pokemon: [Pokemon] = team.pokemon?.map {
-            let name = $0.name
-            guard let mapped = viewModel.currentState.pokemon.filter({ pokemonFiltered in
-                name == pokemonFiltered.speciesName
-            }).first else { fatalError() }
-            return mapped
-        } ?? []
-        cell.configure(pokemon: pokemon)
+        cell.configure(pokemon: team.pokemonArray())
         return cell
     }
     

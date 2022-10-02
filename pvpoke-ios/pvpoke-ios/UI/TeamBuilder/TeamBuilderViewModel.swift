@@ -85,22 +85,13 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
     func changePokemonAtChangePosition(pokemon: Pokemon) {
         guard
             let modifyingIndex = currentState.modifyingIndex,
-            let team = currentState.team,
-            var teamPokemon = team.pokemon else { return }
-        let fastMoveSelection = pokemon.selectedFastMove ?? 0
-        let strongMoveSelections = pokemon.selectedChargeMove ?? [0, 1]
-        let pokemonEntity = coreDataController.addPokemon(
-            atkIv: 15,
-            defIv: 15,
-            hpIv: 15,
-            fastMove: pokemon.fastMoves[fastMoveSelection],
-            name: pokemon.speciesName,
-            strongMoveOne: pokemon.chargedMoves[strongMoveSelections[0]],
-            strongMoveTwo: pokemon.chargedMoves[strongMoveSelections[1]])
+            let team = currentState.team
+            else { return }
+        var teamPokemon = team.pokemonArray()
         if modifyingIndex >= teamPokemon.count {
-            teamPokemon.append(pokemonEntity)
+            teamPokemon.append(pokemon)
         } else {
-            teamPokemon[modifyingIndex] = pokemonEntity
+            teamPokemon[modifyingIndex] = pokemon
         }
         
         coreDataController.editTeam(team: team, pokemon: teamPokemon)
@@ -135,10 +126,6 @@ final class TeamBuilderViewModel: BaseViewModel<TeamBuilderState, TeamBuilderEve
     
     func filterByString(_ searchString: String?) {
         
-    }
-    
-    func getTypeForPokemonEntity(pokemon: PokemonEntity) -> PokemonType {
-        return currentState.availablePokemon.filter { pokemon.name == $0.speciesName }.first?.types.first ?? .none
     }
 }
 

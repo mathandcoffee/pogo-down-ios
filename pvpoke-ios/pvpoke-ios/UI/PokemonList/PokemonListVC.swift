@@ -409,10 +409,7 @@ extension PokemonListVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         let pokemon = viewModel.currentState.availablePokemon[indexPath.row]
-        let height = PokemonCollectionViewCell.height(
-            name: pokemon.speciesName,
-            fastMove: pokemon.fastMoves[0],
-            chargedMoves: pokemon.chargedMoves,
+        let height = PokemonCollectionViewCell.height(pokemon: pokemon,
             collectionView: collectionView)
         
         return CGSize(width: collectionView.frame.width - 32, height: height)

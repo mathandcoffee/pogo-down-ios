@@ -84,12 +84,8 @@ final class TeamBuilderVC: BaseViewController {
     
     func renderState(state: TeamBuilderState) {
         collectionView.reloadData()
-        guard let pokemon = state.team?.pokemon else { return }
-        if pokemon.count < 3 {
-            actionButton.setTitle("Add Pokemon", for: .normal)
-        } else {
-            actionButton.setTitle("Save Team", for: .normal)
-        }
+        guard let pokemon = state.team?.pokemonArray() else { return }
+        actionButton.isHidden = pokemon.count >= 6
     }
     
     func handleEvent(event: TeamBuilderEvent) {
@@ -135,7 +131,7 @@ final class TeamBuilderVC: BaseViewController {
     
     @objc private func handleButtonPress() {
         guard let team = viewModel.currentState.team else { return }
-        let pokemon = team.pokemon ?? []
+        let pokemon = team.pokemonArray()
         if pokemon.count < 6 {
             chooseNewPokemon(pokemonIndex: pokemon.count)
         }
@@ -150,26 +146,14 @@ extension TeamBuilderVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
             ),
             for: indexPath
         ) as? PokemonCollectionViewCell else { fatalError() }
-        
-        guard let pokemon = viewModel.currentState.team?.pokemon?[indexPath.row] else { fatalError() }
-        let fastMove = viewModel.currentState.moves.first(where: {
-            $0.moveId == pokemon.fastMove
-        })?.name ?? ""
-        let chargedMoves = viewModel.currentState.moves.filter {
-            pokemon.strongMoveOne == $0.moveId
-            || pokemon.strongMoveTwo == $0.moveId
-        }.map {
-            $0.name
+        guard let pokemon = viewModel.currentState.team?.pokemonArray()[indexPath.row] else {
+            fatalError()
         }
-        
-        cell.configure(
-            tintColor: .getColorForPokemonType(pokemonType: viewModel.getTypeForPokemonEntity(pokemon: pokemon)),
-            name: pokemon.name!,
-            fastMove: fastMove,
-            strongMoves: chargedMoves,
-            showEdit: true
-        ) { [unowned self] in
-            self.chooseNewPokemon(pokemonIndex: indexPath.row)
+        cell.configure(tintColor: .getColorForPokemonType(pokemonType: pokemon.types[0]), name: pokemon.speciesName, fastMove: pokemon.fastMoves[pokemon.selectedFastMove ?? 0], strongMoves: [
+            pokemon.chargedMoves[pokemon.selectedChargeMove?[0] ?? 0],
+            pokemon.chargedMoves[pokemon.selectedChargeMove?[1] ?? 1]
+        ]) { [weak self] in
+            self?.viewModel.selectPokemon(pokemon: pokemon)
         }
         return cell
     }
@@ -179,20 +163,17 @@ extension TeamBuilderVC: UICollectionViewDataSource, UICollectionViewDelegateFlo
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        guard let pokemon = viewModel.currentState.team?.pokemon?[indexPath.row],
-              let name = pokemon.name,
-              let fastMove = pokemon.fastMove,
-              let strongMoveOne = pokemon.strongMoveOne,
-              let strongMoveTwo = pokemon.strongMoveTwo
+        guard let pokemon = viewModel.currentState.team?.pokemonArray()[indexPath.row]
+              
         else { fatalError() }
 
-        let height = PokemonCollectionViewCell.height(name: name, fastMove: fastMove, chargedMoves: [strongMoveOne, strongMoveTwo], collectionView: collectionView)
+        let height = PokemonCollectionViewCell.height(pokemon: pokemon, collectionView: collectionView)
         
         return CGSize(width: collectionView.frame.width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.currentState.team?.pokemon?.count ?? 0
+        return viewModel.currentState.team?.pokemonArray().count ?? 0
     }
     
     func collectionView(

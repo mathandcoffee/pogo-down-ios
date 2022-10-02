@@ -27,20 +27,22 @@ final class CoreDataController {
     func createNewTeam() -> TeamEntity {
         let teamEnitity = TeamEntity(context: persistentContainer.viewContext)
         teamEnitity.id = UUID()
-        teamEnitity.pokemon = []
+        teamEnitity.pokemon = ""
         saveContext()
         return teamEnitity
     }
     
-    func addTeam(pokemon: [PokemonEntity]) {
+    func addTeam(pokemon: [Pokemon]) {
         let team = TeamEntity(context: persistentContainer.viewContext)
-        team.pokemon = pokemon
+        guard let data = try? JSONEncoder().encode(pokemon) else { return }
+        team.pokemon = String(data: data, encoding: .utf8)
         team.id = UUID()
         saveContext()
     }
     
-    func editTeam(team: TeamEntity, pokemon: [PokemonEntity]) {
-        team.pokemon = pokemon
+    func editTeam(team: TeamEntity, pokemon: [Pokemon]) {
+        guard let data = try? JSONEncoder().encode(pokemon) else { return }
+        team.pokemon = String(data: data, encoding: .utf8)
         saveContext()
     }
     
@@ -50,53 +52,19 @@ final class CoreDataController {
         let fetchedData = try? persistentContainer.viewContext.fetch(fetchRequest)
         return fetchedData ?? []
     }
-    
-    func addPokemon(
-        atkIv: Int,
-        defIv: Int,
-        hpIv: Int,
-        fastMove: String,
-        name: String,
-        strongMoveOne: String,
-        strongMoveTwo: String
-    ) -> PokemonEntity {
-        let pokemon = PokemonEntity(context: persistentContainer.viewContext)
-        pokemon.id = UUID()
-        pokemon.atkIv = Int16(atkIv)
-        pokemon.defIv = Int16(defIv)
-        pokemon.hpIv = Int16(hpIv)
-        pokemon.fastMove = fastMove
-        pokemon.strongMoveOne = strongMoveOne
-        pokemon.strongMoveTwo = strongMoveTwo
-        pokemon.name = name
-        saveContext()
-        return pokemon
-    }
-    
-    func editPokemon(
-        pokemon: PokemonEntity,
-        atkIv: Int,
-        defIv: Int,
-        hpIv: Int,
-        fastMove: String,
-        name: String,
-        strongMoveOne: String,
-        strongMoveTwo: String
-    ) {
-        pokemon.atkIv = Int16(atkIv)
-        pokemon.defIv = Int16(defIv)
-        pokemon.hpIv = Int16(hpIv)
-        pokemon.fastMove = fastMove
-        pokemon.strongMoveOne = strongMoveOne
-        pokemon.strongMoveTwo = strongMoveTwo
-        pokemon.name = name
-        saveContext()
-    }
 }
 
 final class CoreDataModule: ResolvedModule {
     
     static func register() {
         Resolver.register { CoreDataController() }.scope(.cached)
+    }
+}
+
+extension TeamEntity {
+    
+    func pokemonArray() -> [Pokemon] {
+        guard let pokemonData = pokemon?.data(using: .utf8) else { return [] }
+        return (try? JSONDecoder().decode([Pokemon].self, from: pokemonData)) ?? []
     }
 }
