@@ -26,6 +26,7 @@ private final class DataLoadingServiceImpl: DataLoadingService {
     private(set) var formats: [Format] = []
     private(set) var cups: [Cup] = []
     private(set) var groups: [Group] = []
+    private(set) var aiArchetypes: [AIArchetype] = []
     
     init() {
         preloadContent()
@@ -38,6 +39,8 @@ private final class DataLoadingServiceImpl: DataLoadingService {
         formats = parseFile([Format].self, fileName: "formats") ?? []
         base = parseFile(Base.self, fileName: "base")
         cups = parseAllFilesInPath(Cup.self, folderPath: "cups")
+        aiArchetypes = parseFile([AIArchetype].self, fileName: "training/aiArchetypes") ?? []
+        
         groups = parseGroups()
     }
     
@@ -104,7 +107,7 @@ private final class DataLoadingServiceImpl: DataLoadingService {
                     let jsonResult = try JSONDecoder().decode(type, from: data)
                     jsons.append(jsonResult)
                 } catch {
-                    fatalError()
+                    fatalError(error.localizedDescription)
                 }
             }
         } catch {
